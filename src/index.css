@@ -2,3 +2,38 @@
 @tailwind components;
 @tailwind utilities;
 
+html,
+body,
+:root {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  font-family: 'Inter', sans-serif;
+}
+
+.bottomAnimation {
+  animation: moveDown 0.5s ease-in-out;
+}
+
+.topAnimation {
+  animation: moveUp 0.5s ease-in-out;
+}
+
+@keyframes moveDown {
+  from {
+    transform: translateY(-5rem);
+  }
+  to {
+    transform: translateY(0rem);
+  }
+}
+
+@keyframes moveUp {
+  from {
+    transform: translateY(5rem);
+  }
+  to {
+    transform: translateY(0rem);
+  }
+}

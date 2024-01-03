@@ -5,38 +5,46 @@
     "price": 149000,
     "category": "Модон тоглоом",
     "balance": 50,
+    "new": true,
     "made": {
       "title": "Оньсон хүү",
       "image": "https://madeinmongolia.asia/uploads/shop/logo/b8ucy3OLHIvUMVUs2x2kp0a16Bl4640wfBaEYivG.png"
     },
-    "image": ["https://madeinmongolia.asia/uploads/products/thumbnail/C98aZ8VXOyZzyKyn2uo1wN9FHvUWUOIcFwt2OS48.jpg" , "https://madeinmongolia.asia/uploads/products/thumbnail/C98aZ8VXOyZzyKyn2uo1wN9FHvUWUOIcFwt2OS48.jpg" ]
+    "image": [
+      "https://madeinmongolia.asia/uploads/products/thumbnail/C98aZ8VXOyZzyKyn2uo1wN9FHvUWUOIcFwt2OS48.jpg",
+      "https://madeinmongolia.asia/uploads/products/photos/0Neud3936zAyBcYyF4hzBPV2rBpTSrND8lbKgkw8.jpg"
+    ]
   },
   {
     "id": 2,
-    "title": "Хорол",
-    "price": 70000,
+    "title": "Эвлүүлдэг усан онгоц",
+    "price": 199000,
     "category": "Модон тоглоом",
-    "image": ["https://madeinmongolia.asia/uploads/products/thumbnail/q0Cjl1hzlzJAMkdggBOsfYl0VAD3i6wXaVExdyhx.jpg"]
+    "balance": 50,
+    "new": true,
+    "made": {
+      "title": "Оньсон хүү",
+      "image": "https://madeinmongolia.asia/uploads/shop/logo/b8ucy3OLHIvUMVUs2x2kp0a16Bl4640wfBaEYivG.png"
+    },
+    "image": [
+      "https://madeinmongolia.asia/uploads/products/photos/nEpkv0ORZevPsDMFZmAmhyK51A0LqSuiaYJFTiJo.jpg"
+    ]
   },
   {
     "id": 3,
-    "title": "Хорол",
-    "price": 70000,
+    "title": "Эвлүүлдэг шатар",
+    "price": 490000,
     "category": "Модон тоглоом",
-    "image": ["https://madeinmongolia.asia/uploads/products/thumbnail/q0Cjl1hzlzJAMkdggBOsfYl0VAD3i6wXaVExdyhx.jpg"]
-  },
-  {
-    "id": 4,
-    "title": "Хорол",
-    "price": 70000,
-    "category": "Модон тоглоом",
-    "image": ["https://madeinmongolia.asia/uploads/products/thumbnail/q0Cjl1hzlzJAMkdggBOsfYl0VAD3i6wXaVExdyhx.jpg"]
-  },
-  {
-    "id": 5,
-    "title": "Хорол",
-    "price": 70000,
-    "category": "Модон тоглоом",
-    "image": ["https://madeinmongolia.asia/uploads/products/thumbnail/q0Cjl1hzlzJAMkdggBOsfYl0VAD3i6wXaVExdyhx.jpg"]
+    "balance": 50,
+    "new": true,
+    "made": {
+      "title": "Оньсон хүү",
+      "image": "https://madeinmongolia.asia/uploads/shop/logo/b8ucy3OLHIvUMVUs2x2kp0a16Bl4640wfBaEYivG.png"
+    },
+    "image": [
+      "https://madeinmongolia.asia/uploads/products/photos/uI4E7Ir9cc3YNCvv5lACx8pmmsBfjQeFHK5IEee9.jpg",
+      "https://madeinmongolia.asia/uploads/products/photos/FSQ2dofFC6GrAsf3Pp2wgW8fcZUijUBolHPMNleA.jpg",
+      "https://madeinmongolia.asia/uploads/products/photos/9mtJxX7MnpjuHgUdVokCdv782CBBUugy8t3YWNAt.jpg"
+    ]
   }
 ]
