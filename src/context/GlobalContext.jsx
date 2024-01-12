@@ -40,8 +40,6 @@ export const GlobalProvider = ({ children }) => {
     localStorage.setItem("cart", JSON.stringify(updatedCart));
   };
 
-  console.log(basket);
-
   const getModal = (id) => {
     setGetModalData(id);
     setOpenModal(true);

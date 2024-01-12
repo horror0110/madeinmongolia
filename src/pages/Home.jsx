@@ -15,68 +15,38 @@ import Model from "../components/homePage/Model";
 import SortProduct from "../components/homePage/SortProduct";
 import Info from "../components/homePage/Info";
 import ModalWindow from "../components/modal/ModalWindow";
+import { ProductService } from "../service/ProductService";
 
 const Home = () => {
   const [newProducts, setNewProducts] = useState([]);
-
   const [weekProducts, setWeekProducts] = useState([]);
   const [weekProducts2, setWeekProducts2] = useState([]);
   const [gridProducts, setGridProducts] = useState([]);
 
+  // fetch
+
   useEffect(() => {
-    const fetchNewProducts = async () => {
-      const res = await fetch(
-        "https://madeinmongolia.asia/api/v2/products/new-product"
-      );
-
-      const newProducts = await res.json();
-
-      setNewProducts(newProducts.data);
-    };
-
-    fetchNewProducts();
+    ProductService.getNew().then((products) => {
+      setNewProducts(products);
+    });
   }, []);
 
   useEffect(() => {
-    const fetchWeekProducts = async () => {
-      const res = await fetch(
-        "https://madeinmongolia.asia/api/v2/products/big-swiper-4"
-      );
-
-      const weekProducts = await res.json();
-
-      setWeekProducts(weekProducts.data);
-    };
-
-    fetchWeekProducts();
+    ProductService.getWeek().then((products) => {
+      setWeekProducts(products);
+    });
   }, []);
 
   useEffect(() => {
-    const fetchWeekProducts2 = async () => {
-      const res = await fetch(
-        "https://madeinmongolia.asia/api/v2/products/big-swiper-2"
-      );
-
-      const weekProducts2 = await res.json();
-
-      setWeekProducts2(weekProducts2.data);
-    };
-
-    fetchWeekProducts2();
+    ProductService.getWeek2().then((products) => {
+      setWeekProducts2(products);
+    });
   }, []);
 
   useEffect(() => {
-    const fetchGridProducts = async () => {
-      const res = await fetch(
-        "https://madeinmongolia.asia/api/v2/products/home-category-2"
-      );
-
-      const gridProducts = await res.json();
-
-      setGridProducts(gridProducts.data);
-    };
-
-    fetchGridProducts();
+    ProductService.getGrid().then((products) => {
+      setGridProducts(products);
+    });
   }, []);
   return (
     <div>

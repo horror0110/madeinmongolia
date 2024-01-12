@@ -14,7 +14,7 @@ import { GlobalContext } from "../../context/GlobalContext";
 const ProductDetail = ({ product }) => {
   const [value, setValue] = useState(1);
 
-  const { setBasket, basket , addCart } = useContext(GlobalContext);
+  const { setBasket, basket, addCart } = useContext(GlobalContext);
 
   const products = product[0];
 
@@ -39,9 +39,6 @@ const ProductDetail = ({ product }) => {
 
     return total;
   };
-
-
- 
 
   return (
     products && (
@@ -209,7 +206,7 @@ const ProductDetail = ({ product }) => {
                 Худалдаж Авах
               </button>
               <button
-                onClick={()=>addCart(products , value)}
+                onClick={() => addCart(products, value)}
                 className="btn bg-white border-mainColor border-[2px] text-black"
               >
                 <IoIosCart />

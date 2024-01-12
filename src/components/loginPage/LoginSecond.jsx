@@ -2,6 +2,8 @@ import React, { useState } from "react";
 
 import { useNavigate } from "react-router-dom";
 
+import { LoginService } from "../../service/LoginService";
+
 const LoginSecond = ({ setPageChoose, inputValue, setInputValue }) => {
   const [phone, setPhone] = useState("");
 
@@ -25,28 +27,17 @@ const LoginSecond = ({ setPageChoose, inputValue, setInputValue }) => {
       if (phone.trim() == "" && password.trim() == "") {
         return alert("talbaruudig boglono uu");
       }
-      const res = await fetch(
-        "https://madeinmongolia.asia/api/v2/auth/web/login",
-        {
-          method: "POST",
-          body: JSON.stringify(data),
-          headers: {
-            "Content-Type": "application/json",
-          },
+
+      LoginService.login(data).then((result) => {
+        if (result.result) {
+          localStorage.setItem("user", JSON.stringify(result));
+          navigate("/");
+
+          window.location.reload(true);
+        } else {
+          alert(result.message);
         }
-      );
-
-      const isCorrect = await res.json();
-
-      if (isCorrect.result) {
-        localStorage.setItem("user", JSON.stringify(isCorrect));
-
-        navigate("/");
-
-        window.location.reload(true);
-      } else {
-        alert(isCorrect.message);
-      }
+      });
     } catch (err) {
       console.log(err);
     }

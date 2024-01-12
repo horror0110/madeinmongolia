@@ -16,6 +16,7 @@ import DetailSidebar from "../components/detailPage/DetailSidebar";
 
 import Way from "../components/detailPage/Way";
 import { useLocation, useParams } from "react-router-dom";
+import { ProductService } from "../service/ProductService";
 
 const ProductDetailPage = () => {
   const params = useParams();
@@ -33,53 +34,31 @@ const ProductDetailPage = () => {
   const [getId, setGetId] = useState(null);
   const containerRef = useRef(null);
 
+  //fetch
+
   useEffect(() => {
-    const fetchNewProducts = async () => {
-      const res = await fetch(
-        `https://madeinmongolia.asia/api/v2/products/detail/${params.name}`
-      );
+    ProductService.getDetail(params.name).then((products) => {
+      setGetId(products[0].id);
 
-      const newProducts = await res.json();
-
-      setGetId(newProducts.data[0].id);
-
-      setRealData(newProducts.data);
-    };
-
-    fetchNewProducts();
+      setRealData(products);
+    });
   }, [params.name]);
 
   useEffect(() => {
     if (getId !== null) {
-      const fetchNewProducts = async () => {
-        const res = await fetch(
-          `https://madeinmongolia.asia/api/v2/products/related/${getId}`
-        );
+      ProductService.getRelated(getId).then((products) => {
+        setRelatedData(products);
 
-        const newProducts = await res.json();
-
-        setRelatedData(newProducts.data);
-
-        setSliceData(newProducts.data.slice(0, 6));
-      };
-
-      fetchNewProducts();
+        setSliceData(products.slice(0, 6));
+      });
     }
   }, [getId]);
 
   useEffect(() => {
     if (getId !== null) {
-      const fetchNewProducts = async () => {
-        const res = await fetch(
-          `https://madeinmongolia.asia/api/v2/products/top-from-seller/${getId}`
-        );
-
-        const newProducts = await res.json();
-
-        setTopSellers(newProducts.data);
-      };
-
-      fetchNewProducts();
+      ProductService.getTopSellers(getId).then((products) => {
+        setTopSellers(products);
+      });
     }
   }, [getId]);
 

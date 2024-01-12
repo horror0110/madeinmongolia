@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { LoginService } from "../../service/LoginService";
 
-const LoginForm = ({ setPageChoose ,  setInputValue }) => {
+const LoginForm = ({ setPageChoose, setInputValue }) => {
   const [phone, setPhone] = useState("");
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -14,27 +15,16 @@ const LoginForm = ({ setPageChoose ,  setInputValue }) => {
       if (phone.trim() == "") {
         return alert("talbaruudig boglono uu");
       }
-      const res = await fetch(
-        "https://madeinmongolia.asia/api/v2/auth/web/check-number",
-        {
-          method: "POST",
-          body: JSON.stringify(data),
-          headers: {
-            "Content-Type": "application/json",
-            // Add any other required headers here
-          },
+
+      LoginService.checkNumber(data).then((result) => {
+        if (result.result) {
+          setPageChoose("secondLogin");
+
+          setInputValue(phone);
+        } else {
+          alert(result.message);
         }
-      );
-
-      const isCorrect = await res.json();
-
-      if (isCorrect.result) {
-        setPageChoose("secondLogin");
-
-        setInputValue(phone)
-      } else {
-        alert(isCorrect.message);
-      }
+      });
     } catch (err) {
       console.log(err);
     }
@@ -68,7 +58,7 @@ const LoginForm = ({ setPageChoose ,  setInputValue }) => {
             <div>Шинэ хэрэглэгч болох</div>
 
             <Link
-            to=""
+              to=""
               onClick={() => setPageChoose("register")}
               className="font-bold"
             >

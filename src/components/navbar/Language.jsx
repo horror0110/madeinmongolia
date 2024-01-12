@@ -44,6 +44,7 @@ const Language = () => {
 
       if (isCorrect.result) {
         localStorage.removeItem("user");
+        localStorage.removeItem("cart")
         window.location.reload(true);
       }
     } catch (err) {

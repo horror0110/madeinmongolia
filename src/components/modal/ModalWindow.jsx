@@ -4,7 +4,7 @@ import { IoMdClose } from "react-icons/io";
 import { Modal } from "@mui/material";
 
 const ModalWindow = () => {
-  const { getModalData, openModal, setOpenModal } = useContext(GlobalContext);
+  const { getModalData, openModal, setOpenModal , addCart } = useContext(GlobalContext);
 
   const [activeImg, setActiveImg] = useState(0);
   const [value, setValue] = useState(1);
@@ -28,6 +28,8 @@ const ModalWindow = () => {
       fetchModalData();
     }
   }, [getModalData, setModalData]);
+
+  console.log(modalData)
 
   const increaseCount = () => {
     setValue((prev) => parseInt(prev) + 1);
@@ -159,7 +161,7 @@ const ModalWindow = () => {
                   </div>
                 </div>
 
-                <button className="bg-mainColor text-white w-max px-3 py-2 font-extralight rounded-md">
+                <button onClick={()=> addCart(modalData , value)} className="bg-mainColor text-white w-max px-3 py-2 font-extralight rounded-md">
                   Сагсанд нэмэх
                 </button>
               </div>
