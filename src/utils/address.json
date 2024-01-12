@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "user": "Хувь хүн",
+    "name": "ganaa",
+    "email": "ganaa.12396@yahoo.com",
+    "city": "Архангай",
+    "district": "Цэнхэр",
+    "team": "1-р баг",
+    "deliveryAddress": "test",
+    "phone": "99111111",
+    "phone2": "99333333"
+  },
+  {
+    "id": 2,
+    "user": "Хувь хүн",
+    "name": "ganaa",
+    "email": "ganaa.12396@yahoo.com",
+    "city": "Архангай",
+    "district": "Цэнхэр",
+    "team": "1-р баг",
+    "deliveryAddress": "test",
+    "phone": "99111111",
+    "phone2": "99333333"
+  }
+]

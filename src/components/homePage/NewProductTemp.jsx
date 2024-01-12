@@ -5,10 +5,14 @@ import { GlobalContext } from "../../context/GlobalContext";
 
 const NewProductTemp = ({ product }) => {
   const { getModal } = useContext(GlobalContext);
+
   return (
     <div className="relative flex flex-col gap-1 mx-auto border shadow  p-3 hover:shadow-2xl">
-      <Link to="/product/1" className="w-full h-[200px]">
-        <img src={product.image[0]} className="object-cover h-full w-full" />
+      <Link to={`/product/${product.slug}`} className="w-full h-[200px]">
+        <img
+          src={`https://madeinmongolia.asia/${product.thumbnail_image}`}
+          className="object-cover h-full w-full"
+        />
       </Link>
 
       {product.new && (
@@ -18,14 +22,16 @@ const NewProductTemp = ({ product }) => {
       )}
 
       <div className="ml-2 flex flex-col">
-        <h1 className="font-bold text-[14px]">{product.title}</h1>
-        <span className="text-xs my-1 text-gray-500">{product.category}</span>
+        <h1 className="font-bold text-[14px]">{product.name}</h1>
+        <span className="text-xs my-1 text-gray-500">
+          {product.subsubcategory}
+        </span>
 
         <div className="flex justify-between items-center">
-          <span className="text-mainColor font-bold">{product.price}</span>
+          <span className="text-mainColor font-bold">{product.base_price}</span>
 
           <div
-            onClick={() => getModal(product)}
+            onClick={() => getModal(product.id)}
             className="border border-gray-300 p-1 hover:bg-[#009f7f] hover:text-white text-[#009f7f] "
           >
             <FaPlus size={12} />

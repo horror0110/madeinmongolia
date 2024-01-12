@@ -13,13 +13,13 @@ import Select from "../components/filterPage/Select";
 import sortCategoryData from "../utils/categoryOption.json";
 import data from "../utils/product.json";
 import NewProductTemp from "../components/homePage/NewProductTemp";
-import Modal from "../components/modal/Modal"
+import ModalWindow from "../components/modal/ModalWindow"
 
 const SearchPage = () => {
   return (
     <div>
       <Navbar />
-      <Modal/>
+      <ModalWindow/>
       <Way links={links} />
       <SortPageBanner />
 

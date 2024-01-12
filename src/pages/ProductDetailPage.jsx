@@ -1,12 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Navbar from "../components/navbar/Navbar";
 import StorePayBar from "../components/detailPage/StorePayBar";
-import links from "../utils/link.json";
-import data from "../utils/product.json";
 import SuggestProduct from "../components/detailPage/SuggestProduct";
 import { CiStar } from "react-icons/ci";
 import Service from "../components/detailPage/Service";
-import Modal from "../components/modal/Modal";
+import ModalWindow from "../components/modal/ModalWindow";
 import Comments from "../components/detailPage/Comments";
 import SameProducts from "../components/detailPage/SameProducts";
 import ProductDetail from "../components/detailPage/ProductDetail";
@@ -17,9 +15,77 @@ import { Grid } from "swiper/modules";
 import DetailSidebar from "../components/detailPage/DetailSidebar";
 
 import Way from "../components/detailPage/Way";
+import { useLocation, useParams } from "react-router-dom";
 
 const ProductDetailPage = () => {
+  const params = useParams();
+
   const [swiper, setSwiper] = useState(null);
+
+  const [realData, setRealData] = useState([]);
+
+  const [relatedData, setRelatedData] = useState([]);
+
+  const [topSellers, setTopSellers] = useState([]);
+
+  const [sliceData, setSliceData] = useState([]);
+
+  const [getId, setGetId] = useState(null);
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    const fetchNewProducts = async () => {
+      const res = await fetch(
+        `https://madeinmongolia.asia/api/v2/products/detail/${params.name}`
+      );
+
+      const newProducts = await res.json();
+
+      setGetId(newProducts.data[0].id);
+
+      setRealData(newProducts.data);
+    };
+
+    fetchNewProducts();
+  }, [params.name]);
+
+  useEffect(() => {
+    if (getId !== null) {
+      const fetchNewProducts = async () => {
+        const res = await fetch(
+          `https://madeinmongolia.asia/api/v2/products/related/${getId}`
+        );
+
+        const newProducts = await res.json();
+
+        setRelatedData(newProducts.data);
+
+        setSliceData(newProducts.data.slice(0, 6));
+      };
+
+      fetchNewProducts();
+    }
+  }, [getId]);
+
+  useEffect(() => {
+    if (getId !== null) {
+      const fetchNewProducts = async () => {
+        const res = await fetch(
+          `https://madeinmongolia.asia/api/v2/products/top-from-seller/${getId}`
+        );
+
+        const newProducts = await res.json();
+
+        setTopSellers(newProducts.data);
+      };
+
+      fetchNewProducts();
+    }
+  }, [getId]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [params.name, getId, relatedData]);
 
   const nexto = () => {
     swiper.slideNext();
@@ -39,11 +105,10 @@ const ProductDetailPage = () => {
     return stars;
   };
 
-  const product = data[0];
   return (
-    <div>
+    <div className="">
       <Navbar />
-      <Modal />
+      <ModalWindow />
 
       {/** StorePay menu bar */}
 
@@ -51,28 +116,26 @@ const ProductDetailPage = () => {
 
       {/** StorePay menu bar */}
 
-      {/*** links ***/}
+      <div ref={containerRef} className="mt-2 mx-32">
+        {/*** links ***/}
 
-      <Way links={links} />
+        <Way links={realData[0]} />
 
-      {/*** links ***/}
-
-      <div className="mx-20 mt-2">
+        {/*** links ***/}
         {/** Танд санал болгох***/}
-
         <div className="flex items-center gap-20 mt-3 border border-gray-100 shadow p-5 w-max">
           <h1 className="text-semibold text-xl font-light text-darkGray">
             Танд санал болгох
           </h1>
 
-          <SuggestProduct data={data} />
+          <SuggestProduct data={sliceData} />
         </div>
 
         {/** Танд санал болгох***/}
 
         {/**** product detail ***/}
 
-        <ProductDetail product={product} />
+        <ProductDetail product={realData} />
 
         {/**** product detail ***/}
 
@@ -82,53 +145,56 @@ const ProductDetailPage = () => {
 
         {/*** Баталгаат хүртгэлт ***/}
 
-        <div className="flex gap-10">
-          <DetailSidebar data={data} renderStar={renderStar} />
+        <div className="flex justify-center">
+          <div className="w-[30%]">
+            <DetailSidebar
+              topSellers={topSellers}
+              renderStar={renderStar}
+              realData={realData}
+            />
+          </div>
 
-          <div className="">
+          <div className="w-[70%] flex flex-col items-center">
             {/*** СЭТГЭГДЭЛ***/}
             <Comments />
 
             {/*** СЭТГЭГДЭЛ***/}
-
-            {/*** Төстэй бараанууд */}
-            <h1 class=" text-lg my-10 relative">
-              Ижил төстэй бараа
-              <span class="absolute border-[0.5px] bottom-[-5px] left-0 w-full bg-gray-400"></span>
-              <span class="absolute bottom-[-5px] left-0 border-[1px] border-black w-[120px]"></span>
-            </h1>
-            <div className="w-[900px]">
-              <Swiper
-                className=""
-                spaceBetween={0}
-                slidesPerView={2}
-                onSwiper={(s) => {
-                  setSwiper(s);
-                }}
-                grid={{ rows: 2 }}
-                modules={[Grid]}
-              >
-                {data.map((el, index) => (
-                  <SwiperSlide key={el.id}>
-                    <SameProducts data={el} renderStar={renderStar} />
-                  </SwiperSlide>
-                ))}
-                <div
-                  onClick={backto}
-                  className="absolute bg-gray-400 rounded-full p-2 left-0 transform -translate-y-1/2 top-1/2 z-10"
+            <div className="w-full">
+              <h1 className=" text-lg my-10 relative">
+                Ижил төстэй бараа
+                <span className="absolute border-[0.5px] bottom-[-5px] left-0 w-full bg-gray-400"></span>
+                <span className="absolute bottom-[-5px] left-0 border-[1px] border-black w-[120px]"></span>
+              </h1>
+              <div className="">
+                <Swiper
+                  className=""
+                  spaceBetween={0}
+                  slidesPerView={2}
+                  onSwiper={(s) => {
+                    setSwiper(s);
+                  }}
+                  modules={[Grid]}
                 >
-                  <FaAngleLeft color="black" />
-                </div>
-                <div
-                  onClick={nexto}
-                  className="absolute bg-gray-400 rounded-full p-2 right-0 transform -translate-y-1/2 top-1/2 z-10 "
-                >
-                  <FaAngleRight />
-                </div>
-              </Swiper>
+                  {relatedData.map((el, index) => (
+                    <SwiperSlide key={el.id}>
+                      <SameProducts data={el} renderStar={renderStar} />
+                    </SwiperSlide>
+                  ))}
+                  <div
+                    onClick={backto}
+                    className="absolute bg-gray-400 rounded-full p-2 left-0 transform -translate-y-1/2 top-1/2 z-10"
+                  >
+                    <FaAngleLeft color="black" />
+                  </div>
+                  <div
+                    onClick={nexto}
+                    className="absolute bg-gray-400 rounded-full p-2 right-0 transform -translate-y-1/2 top-1/2 z-10 "
+                  >
+                    <FaAngleRight />
+                  </div>
+                </Swiper>
+              </div>
             </div>
-
-            {/*** Төстэй бараанууд */}
           </div>
         </div>
       </div>

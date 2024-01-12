@@ -4,16 +4,31 @@ import { FaChevronRight } from "react-icons/fa6";
 
 const Way = ({ links }) => {
   return (
-    <div className="flex gap-1 mx-20 my-5">
-      {links.map((link, index) => (
-        <Link
-          key={link.id}
-          className="flex items-center font-light text-linkColor text-[13px] hover:text-gray-700 hover:underline"
-          href=""
-        >
-          {link.title} <FaChevronRight size={10} />
+    <div className="text-linkColor text-[13px]  flex items-center gap-1 my-5">
+      <Link to="" className="hover:underline">Нүүр</Link>
+      <FaChevronRight />
+      <Link to="" className="hover:underline">Бүх ангиллууд</Link>
+      <FaChevronRight />
+      {links && (
+        <Link to="" className="hover:underline">
+          {links.categories.category.name}
         </Link>
-      ))}
+      )}
+
+      <FaChevronRight />
+      {links && (
+        <Link to="" className="hover:underline">
+          {links.categories.subcategory.name}
+        </Link>
+      )}
+
+      <FaChevronRight />
+
+      {links && (
+        <Link className="font-bold text-black hover:underline">
+          {links.categories.subsubcategory.name}
+        </Link>
+      )}
     </div>
   );
 };

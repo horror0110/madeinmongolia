@@ -5,11 +5,13 @@ import MenuItem from "./MenuItem";
 import { RxHamburgerMenu } from "react-icons/rx";
 import SearchBar from "./SearchBar";
 import Logo from "./Logo";
-import { Box } from "@mui/material";
+
+import NavIcons from "./NavIcons";
 
 const Navbar = () => {
   const [visible, setVisible] = useState(false);
 
+  // scroll animation
   const changeNav = () => {
     if (window.scrollY >= 180) {
       setVisible(true);
@@ -26,29 +28,29 @@ const Navbar = () => {
   }, []);
 
   const classes = visible
-    ? "fixed left-0 w-full z-50 bottomAnimation  top-0   bg-white flex items-center justify-between md:px-20 py-5 px-3"
-    : "bg-white  flex items-center topAnimation z-50 w-full justify-between md:px-20 py-5 px-3";
+    ? "fixed left-0 w-full z-50 bottomAnimation z-50  top-0   bg-white flex items-center justify-between md:px-20 py-5 px-3"
+    : "bg-white flex items-center topAnimation z-50 w-full justify-between md:px-20 py-5 px-3";
 
   return (
-    <Box className="">
+    <div className="">
       {!visible && (
         <>
           <Notification />
           <Language />
         </>
       )}
-      <Box className={classes}>
-        <Box display="flex" gap={3} alignItems="center">
+      <div className={classes}>
+        <div className="flex items-center gap-3">
           {/*** burger menu */}
-          <Box className="md:hidden">
+          <div className="md:hidden">
             <RxHamburgerMenu size={25} />
-          </Box>
+          </div>
           {/*** burger menu */}
 
           {/**** LOGO ***/}
           <Logo />
           {/**** LOGO ***/}
-        </Box>
+        </div>
 
         {/**** SearchBAR */}
         <SearchBar />
@@ -57,42 +59,14 @@ const Navbar = () => {
 
         {/****  icons */}
 
-        <Box display="flex" alignItems="center" gap={3}>
-          <img
-            src="https://madeinmongolia.asia/assets/frontend/images/icons/compare_icon.gif"
-            alt=""
-            width={26}
-            height={26}
-            className="hidden md:block"
-          />
-          <img
-            src="https://madeinmongolia.asia/assets/frontend/images/icons/wishlist_icon.gif"
-            alt=""
-            width={26}
-            height={26}
-            className="hidden md:block"
-          />
-          <img
-            src="https://madeinmongolia.asia/assets/frontend/images/icons/shoppingcart_icon.gif"
-            alt=""
-            width={26}
-            height={26}
-          />
-          <img
-            src="https://madeinmongolia.asia/assets/frontend/images/icons/profile_icon.gif"
-            alt=""
-            width={26}
-            height={26}
-            className="hidden md:block"
-          />
-        </Box>
+        <NavIcons />
 
         {/****  icons */}
-      </Box>
-      <Box display={{ xs: "none", md: "block" }}>
+      </div>
+      <div className="hidden md:block">
         <MenuItem />
-      </Box>
-    </Box>
+      </div>
+    </div>
   );
 };
 

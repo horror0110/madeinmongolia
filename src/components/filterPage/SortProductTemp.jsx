@@ -28,7 +28,7 @@ const SortProductTemp = ({ product }) => {
         <div
           className={
             hovered
-              ? `flex absolute gap-10 justify-center  p-1 z-30 bg-white transition-transform duration-800 bottom-0  translate-y-0 w-full `
+              ? `flex absolute gap-10 justify-center p-1 z-30 bg-white transition-transform duration-800 bottom-0  translate-y-0 w-full `
               : `flex absolute gap-10 justify-center p-1 z-0 bg-white transition-transform duration-800  translate-y-5 w-full `
           }
         >

@@ -60,9 +60,10 @@ const MenuItem = () => {
 
             {links.map((link, index) => (
               <Link
+               to=""
                 key={index}
                 className="hover:border-b-[2px] border-b-mainColor text-[11px] text-[#2c2c2c]"
-                to=""
+                
               >
                 {link.title}
               </Link>
@@ -75,10 +76,10 @@ const MenuItem = () => {
             alignItems={"center"}
             gap={"20px"}
           >
-            <Link className="hover:border-b-[2px] border-b-mainColor" to="">
+            <Link to="" className="hover:border-b-[2px] border-b-mainColor">
               ШИНЭ
             </Link>
-            <Link className="hover:border-b-[2px] border-b-mainColor" to="">
+            <Link to="" className="hover:border-b-[2px] border-b-mainColor">
               ҮЙЛДВЭРЛЭ
             </Link>
           </Box>

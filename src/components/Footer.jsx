@@ -6,7 +6,7 @@ import { FaTwitter } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <div className="bg-darkBlue w-full px-20 pt-16 pb-8 text-white mt-5 ">
+    <div className="bg-darkBlue w-full px-20 pt-16 pb-8 text-white">
       <div className="flex gap-10">
         <div className="w-[40%]">
           <img
@@ -57,9 +57,9 @@ const Footer = () => {
             ХЭРЭГТЭЙ ХОЛБООС
           </h1>
           <div className="flex flex-col gap-2 text-[#818a91] text-[12.8px]">
-            <Link>www.codehub.mn</Link>
-            <Link>www.mimtrading.mn</Link>
-            <Link>www.jd.com</Link>
+            <Link to="">www.codehub.mn</Link>
+            <Link to="">www.mimtrading.mn</Link>
+            <Link to="">www.jd.com</Link>
           </div>
         </div>
 
@@ -69,10 +69,10 @@ const Footer = () => {
           </h1>
 
           <div className="flex flex-col gap-2 text-[12.8px] mb-4 text-[#818a91]">
-            <Link>www.codehub.mn</Link>
-            <Link>www.mimtrading.mn</Link>
-            <Link>www.jd.com</Link>
-            <Link>www.jd.com</Link>
+            <Link to="">www.codehub.mn</Link>
+            <Link to="">www.mimtrading.mn</Link>
+            <Link to="">www.jd.com</Link>
+            <Link to="">www.jd.com</Link>
           </div>
 
           <div className="text-[12px] font-semibold ">

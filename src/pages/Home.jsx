@@ -1,5 +1,4 @@
-import React from "react";
-
+import React, { useEffect, useState } from "react";
 import Navbar from "../components/navbar/Navbar";
 import Hero from "../components/homePage/Hero";
 import NewProducts from "../components/homePage/NewProducts";
@@ -15,38 +14,92 @@ import BlackBanner from "../components/homePage/BlackBanner";
 import Model from "../components/homePage/Model";
 import SortProduct from "../components/homePage/SortProduct";
 import Info from "../components/homePage/Info";
-import Modal from "../components/modal/Modal";
+import ModalWindow from "../components/modal/ModalWindow";
 
 const Home = () => {
+  const [newProducts, setNewProducts] = useState([]);
+
+  const [weekProducts, setWeekProducts] = useState([]);
+  const [weekProducts2, setWeekProducts2] = useState([]);
+  const [gridProducts, setGridProducts] = useState([]);
+
+  useEffect(() => {
+    const fetchNewProducts = async () => {
+      const res = await fetch(
+        "https://madeinmongolia.asia/api/v2/products/new-product"
+      );
+
+      const newProducts = await res.json();
+
+      setNewProducts(newProducts.data);
+    };
+
+    fetchNewProducts();
+  }, []);
+
+  useEffect(() => {
+    const fetchWeekProducts = async () => {
+      const res = await fetch(
+        "https://madeinmongolia.asia/api/v2/products/big-swiper-4"
+      );
+
+      const weekProducts = await res.json();
+
+      setWeekProducts(weekProducts.data);
+    };
+
+    fetchWeekProducts();
+  }, []);
+
+  useEffect(() => {
+    const fetchWeekProducts2 = async () => {
+      const res = await fetch(
+        "https://madeinmongolia.asia/api/v2/products/big-swiper-2"
+      );
+
+      const weekProducts2 = await res.json();
+
+      setWeekProducts2(weekProducts2.data);
+    };
+
+    fetchWeekProducts2();
+  }, []);
+
+  useEffect(() => {
+    const fetchGridProducts = async () => {
+      const res = await fetch(
+        "https://madeinmongolia.asia/api/v2/products/home-category-2"
+      );
+
+      const gridProducts = await res.json();
+
+      setGridProducts(gridProducts.data);
+    };
+
+    fetchGridProducts();
+  }, []);
   return (
     <div>
       <Navbar />
-
       <Hero />
-      <Modal data={data} />
+      <ModalWindow />
       <NewProducts
-        data={data}
+        newProducts={newProducts}
         header="https://madeinmongolia.asia/uploads/image_names/web_images/new_products_title/VZAH90jhOEIBihmh8daBrA96HimH6tHQmMm9eB5Z.png"
       />
       <WeekBest
-        data={data}
+        data={weekProducts}
         header="https://madeinmongolia.asia/uploads/image_names/web_images/big_swiper/0TzSIXAxutDTbLqzoK3vfCkm2zTttRKdtGcvIKSx.png"
       />
       <Cards data={data} />
       <BannerTemp img="https://madeinmongolia.asia/uploads/home_section_big_one_banner//JHjv5HeiyRZHqBlRCxyhfDBKTfJiz0PUJ8DNAIne.png" />
       <PayChance />
       <WeekBest
-        data={data}
+        data={weekProducts2}
         header="https://madeinmongolia.asia/uploads/image_names/web_images/big_swiper/Y8I5iAz701dy1JV3Va9TSrYIfzHXRrnsHtz73WC7.png"
       />
-      <GridBanner
-        banner="https://madeinmongolia.asia/uploads/home2_categories/oWHuUYQhDzXV0ya9Yy0BOr03oKxkqYuV0O0UQa9d.png"
-        data={data}
-      />
-      <GridBanner
-        banner="https://madeinmongolia.asia/uploads/home2_categories/mUHqG0wanqbJACukQNiyh9oqSNlg2jZr0B1fGfUn.png"
-        data={data}
-      />
+      <GridBanner data={gridProducts[0]} />
+      <GridBanner data={gridProducts[1]} />
       <BannerTemp img="https://madeinmongolia.asia/uploads/home_section_big_one_banner//sAHQW6BDavscHhQzfM1VrbAFsG7Tj8vetz9Q3Wjg.png" />
       <WeekBest
         data={data}

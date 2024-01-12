@@ -10,7 +10,7 @@ const SortProduct = ({ data }) => {
           <button className="bg-mainColor px-3 py-1 h-max rounded-full text-[13px] shadow-lg text-white">
             Давс
           </button>
-          <button className="shadow rounded-full px-3 py-1 h-max text-[13px] bg-white ">
+          <button className="shadow rounded-full px-3 pys-1 h-max text-[13px] bg-white ">
             Нөөшилсөн бүтээгдэхүүн
           </button>
         </div>
