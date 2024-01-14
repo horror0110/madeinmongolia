@@ -10,6 +10,7 @@ import { IoIosClose } from "react-icons/io";
 import { FiShoppingCart } from "react-icons/fi";
 import { FiCornerDownRight } from "react-icons/fi";
 import { GlobalContext } from "../../context/GlobalContext";
+import { Link } from "react-router-dom";
 
 const NavIcons = () => {
   const [openBasket, setOpenBasket] = useState(false);
@@ -86,7 +87,7 @@ const NavIcons = () => {
 
       {/*** basket ***/}
       <div ref={dropdownRef} className="relative">
-        <div className="relative">
+        <Link to="/cart" className="relative">
           <div className="absolute text-xs bg-mainColor text-white rounded-full px-1 right-[-5px] top-[-5px]">
             {totalCartCount}
           </div>
@@ -97,7 +98,7 @@ const NavIcons = () => {
             width={26}
             height={26}
           />
-        </div>
+        </Link>
 
         {openBasket && (
           <div className="absolute bg-white w-[350px] shadow rounded-md top-8 py-4 px-5 border text-opacityColor border-gray-200 right-0 z-20 text-center">

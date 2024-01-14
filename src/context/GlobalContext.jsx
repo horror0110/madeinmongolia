@@ -7,13 +7,17 @@ export const GlobalProvider = ({ children }) => {
 
   const [getModalData, setGetModalData] = useState("");
 
-  const [userInfo, setUserInfo] = useState(localStorage.getItem("user"));
+  const [userInfo, setUserInfo] = useState(
+    JSON.parse(localStorage.getItem("user"))
+  );
 
   const [basket, setBasket] = useState(
     JSON.parse(localStorage.getItem("cart")) || []
   );
 
   const addCart = (product, value) => {
+
+    // dawhtsah baraag shalgah
     const isProductInCart = basket.some((item) => item.id === product.id);
 
     let updatedCart;
@@ -30,6 +34,8 @@ export const GlobalProvider = ({ children }) => {
         name: product.name,
         price: product.main_price,
         quantity: value,
+        image: product.thumbnail_image,
+        calculable_price: product.calculable_price,
       };
 
       updatedCart = [...basket, newCartItem];

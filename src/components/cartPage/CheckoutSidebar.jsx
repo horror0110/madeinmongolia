@@ -1,6 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
+import { GlobalContext } from "../../context/GlobalContext";
 
 const CheckoutSidebar = () => {
+  const { basket } = useContext(GlobalContext);
+
+  const totalPrice = basket.reduce((total, item) => {
+    return total + item.calculable_price * item.quantity;
+  }, 0);
+
   return (
     <>
       <div className="border py-5 rounded-lg shadow text-buttonGray  border-gray-200">
@@ -10,7 +17,7 @@ const CheckoutSidebar = () => {
           </h1>
 
           <div className="bg-greenColor  mr-5 text-center text-white  text-[10px] font-[400] w-max rounded-md px-2 py-1">
-            1 Бараа
+            {basket.length} Бараа
           </div>
         </div>
 
@@ -20,61 +27,22 @@ const CheckoutSidebar = () => {
 
             <h1>ТӨЛӨХ ДҮН</h1>
           </div>
+          {basket.map((el, index) => (
+            <div className="flex items-center  justify-between">
+              <h1 className="font-bold text-[14px]">
+                {el.name} × {el.quantity}
+              </h1>
 
-          <div className="flex items-center  justify-between">
-            <h1 className="font-bold text-[14px]">TEST PRODUCT × 2</h1>
-
-            <h1 className="text-[14px] font-bold">1,000₮</h1>
-          </div>
-
-          <div className="flex items-center text-[12px]  justify-between">
-            <h1>НИЙТ</h1>
-
-            <h1 className="text-[14px] font-semibold">1,000₮</h1>
-          </div>
-
-          <div className="flex text-[12px]  items-center  justify-between">
-            <h1>НӨАТ</h1>
-
-            <h1>0₮</h1>
-          </div>
-
-          <div className="flex  text-[12px] items-center  justify-between">
-            <h1>НИЙТ ХҮРГЭЛТИЙН ТӨЛБӨР</h1>
-
-            <h1>0₮</h1>
-          </div>
+              <h1 className="text-[14px] font-bold">
+                {el.calculable_price * el.quantity}
+              </h1>
+            </div>
+          ))}
 
           <div className="flex  text-[12px] items-center  justify-between">
             <h1 className="font-bold">ТӨЛӨХ ДҮН</h1>
 
-            <h1 className="font-bold text-[14px]">1,000₮</h1>
-          </div>
-
-          <div className="flex flex-col items-start gap-3">
-            <div className="flex items-center h-[38px]   justify-center">
-              <input
-                className="border w-[200px] rounded-md h-full px-3 py-1 placeholder:text-[14px] text-start"
-                type="text"
-                placeholder="Купоны код байгаа юу? Энд"
-              />
-
-              <button className="btn min-h-0 h-full text-white bg-mainColor font-[300]">
-                Идэвхижүүлэх
-              </button>
-            </div>
-
-            <div className="flex items-center h-[38px] justify-center">
-              <input
-                className="border rounded-md w-[200px]  h-full   px-3 py-1 placeholder:text-[14px] text-start"
-                type="text"
-                placeholder="Бэлгийн карт ашиглах энд оруулах"
-              />
-
-              <button className="btn min-h-0 h-full text-white bg-mainColor font-[300]">
-                Ашиглах
-              </button>
-            </div>
+            <h1 className="font-bold text-[14px]">{totalPrice}</h1>
           </div>
         </div>
       </div>

@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 import { GlobalContext } from "../../context/GlobalContext";
 
 const Language = () => {
-  const { userInfo , setUserInfo } = useContext(GlobalContext);
+  const { userInfo, setUserInfo } = useContext(GlobalContext);
   const langs = [
-    { 
+    {
       id: 1,
       title: "Монгол",
       icon: "https://madeinmongolia.asia/assets/frontend/images/icons/flags/mn.png",
@@ -35,7 +35,7 @@ const Language = () => {
         {
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${JSON.parse(userInfo)?.access_token ?? ""}`,
+            Authorization: `Bearer ${userInfo?.access_token ?? ""}`,
           },
         }
       );
@@ -44,7 +44,7 @@ const Language = () => {
 
       if (isCorrect.result) {
         localStorage.removeItem("user");
-        localStorage.removeItem("cart")
+        localStorage.removeItem("cart");
         window.location.reload(true);
       }
     } catch (err) {
@@ -74,7 +74,6 @@ const Language = () => {
       document.removeEventListener("click", handleOutsideClick);
     };
   }, []);
-
 
   return (
     <div className="bg-mainColor h-9 w-full text-white md:px-20 px-3 text-xs flex items-center justify-between">

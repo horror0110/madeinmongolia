@@ -1,28 +1,54 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Navbar from "../components/navbar/Navbar";
 import Footer from "../components/Footer";
 import Status from "../components/cartPage/Status";
 import WarningCart from "../components/cartPage/WarningCart";
-import data from "../utils/product.json";
 import { FaRegTrashAlt } from "react-icons/fa";
 import CheckoutSidebar from "../components/cartPage/CheckoutSidebar";
+import { GlobalContext } from "../context/GlobalContext";
 
 const CartPage = () => {
-  const [value, setValue] = useState(1);
+  const { basket, setBasket } = useContext(GlobalContext);
 
-  const increaseCount = () => {
-    setValue((prev) => parseInt(prev) + 1);
+  const increaseCount = (item) => {
+    setBasket((prevBasket) => {
+      const updatedBasket = prevBasket.map((el) =>
+        el.name === item.name ? { ...el, quantity: el.quantity + 1 } : el
+      );
+      localStorage.setItem("cart", JSON.stringify(updatedBasket));
+      return updatedBasket;
+    });
   };
 
-  const decreaseCount = () => {
-    if (value > 1) {
-      setValue((prev) => parseInt(prev) - 1);
+  const decreaseCount = (item) => {
+    setBasket((prevBasket) => {
+      const updatedBasket = prevBasket.map((el) =>
+        el.name === item.name && el.quantity > 1
+          ? { ...el, quantity: el.quantity - 1 }
+          : el
+      );
+      localStorage.setItem("cart", JSON.stringify(updatedBasket));
+      return updatedBasket;
+    });
+  };
+
+  const handleChange = (e, item) => {
+    const inputValue = e.target.value.trim(); // Remove leading/trailing whitespaces
+    const newQuantity = inputValue !== "" ? parseInt(inputValue, 10) : null;
+
+    if (isNaN(newQuantity) && inputValue !== "") {
+      return;
     }
+
+    setBasket((prevBasket) => {
+      const updatedBasket = prevBasket.map((el) =>
+        el.name === item.name ? { ...el, quantity: newQuantity } : el
+      );
+      localStorage.setItem("cart", JSON.stringify(updatedBasket));
+      return updatedBasket;
+    });
   };
 
-  const handleChange = (e) => {
-    setValue(e.target.value);
-  };
   return (
     <div>
       <Navbar />
@@ -33,7 +59,7 @@ const CartPage = () => {
         {/** Анхааруулга */}
         <WarningCart />
 
-        <div className="flex justify-center mx-28 my-10">
+        <div className="flex gap-5 justify-center mx-28 my-10">
           <div className="w-[65%]">
             <table>
               <tr className="text-[10px] font-bold text-darkGray border-b ">
@@ -55,14 +81,19 @@ const CartPage = () => {
                 </td>
               </tr>
 
-              {data.map((item, index) => (
-                <>
-                  <tr className="" key={index}>
+              {basket.map((item, index) => (
+                <React.Fragment key={index}>
+                  <tr className="">
                     <td className="py-5 pr-3" align="">
-                      <img src={item.image[0]} alt="" width={50} height={50} />
+                      <img
+                        src={`https://madeinmongolia.asia/${item.image}`}
+                        alt=""
+                        width={50}
+                        height={50}
+                      />
                     </td>
                     <td align="" className="pr-40">
-                      {item.title}
+                      {item.name}
                     </td>
                     <td align="" className="text-[14px] font-bold">
                       {item.price}
@@ -72,20 +103,20 @@ const CartPage = () => {
                       <div className="flex items-center mx-3 border w-max">
                         <button
                           className="bg-mainColor text-white px-4 py-2 rounded"
-                          onClick={() => decreaseCount(index)}
+                          onClick={() => decreaseCount(item)}
                         >
                           -
                         </button>
                         <input
                           min={1}
-                          value={value}
+                          value={item.quantity}
                           type="text"
                           className="w-[40px] text-[12px] text-center"
-                          onChange={(e) => handleChange(e, index)}
+                          onChange={(e) => handleChange(e, item)}
                         />
                         <button
                           className="bg-mainColor text-white px-4 py-2 rounded"
-                          onClick={() => increaseCount(index)}
+                          onClick={() => increaseCount(item)}
                         >
                           +
                         </button>
@@ -93,7 +124,7 @@ const CartPage = () => {
                       {/*** increase decrease */}
                     </td>
                     <td align="" className="text-[14px] font-bold">
-                      {item.price}
+                      {item.calculable_price * item.quantity}
                     </td>
                   </tr>
 
@@ -110,7 +141,7 @@ const CartPage = () => {
                       </div>
                     </td>
                   </tr>
-                </>
+                </React.Fragment>
               ))}
             </table>
           </div>
