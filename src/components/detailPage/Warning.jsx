@@ -2,7 +2,7 @@ import React from "react";
 
 const Warning = () => {
   return (
-    <div className="mt-8 text-[#856404] bg-pink-200 rounded-md p-3">
+    <div className="mt-8 text-[#856404] bg-[#fff3cd] rounded-md p-3">
       <span className="flex items-center gap-2 mb-2">
         <img
           src="https://madeinmongolia.asia/assets/frontend/images/icons/info_icon.gif"

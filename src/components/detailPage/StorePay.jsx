@@ -3,7 +3,7 @@ import { FaAngleRight } from "react-icons/fa6";
 
 const StorePay = () => {
   return (
-    <div className="my-3 flex justify-between  w-max items-center gap-10 border p-3 rounded-xl hover:shadow-2xl bg-gray-300">
+    <div className="my-3 flex justify-between  w-full items-center gap-10 border p-3 rounded-xl hover:shadow-2xl bg-gray-300">
       <div className="flex items-center gap-10">
         <img
           src="https://madeinmongolia.asia/assets/frontend/images/storepay.png"

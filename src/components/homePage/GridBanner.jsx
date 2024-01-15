@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const GridBanner = ({ data }) => {
   return (
     data && (
-      <div className="flex  mt-10 justify-center mx-20">
+      <div className="flex  mt-10 justify-center mx-10  lg:mx-20 xl:mx-20 2xl:mx-60">
         <div className="relative">
           <img
             src={`https://madeinmongolia.asia/${data.feature_image}`}
@@ -20,12 +20,12 @@ const GridBanner = ({ data }) => {
           </div>
         </div>
 
-        <div className="grid grid-cols-4">
+        <div className="grid grid-cols-4 w-full">
           {data.products.map((product, index) => (
             <Link
               to={`/product/${product.slug}`}
               key={index}
-              className="border flex flex-col items-center h-full py-2 px-10 hover:shadow-2xl "
+              className="border flex flex-col  items-center h-full py-2 px-10 hover:shadow-2xl "
             >
               <h1 className="mb-3 text-[11px]">{product.name}</h1>
               <img

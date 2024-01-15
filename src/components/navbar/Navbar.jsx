@@ -28,8 +28,8 @@ const Navbar = () => {
   }, []);
 
   const classes = visible
-    ? "fixed left-0 w-full z-50 bottomAnimation z-50  top-0   bg-white flex items-center justify-between md:px-20 py-5 px-3"
-    : "bg-white flex items-center topAnimation z-50 w-full justify-between md:px-20 py-5 px-3";
+    ? "fixed left-0 w-full z-50 bottomAnimation z-50  top-0   bg-white flex items-center justify-between px-10 lg:px-20 xl:px-20 2xl:px-60 py-5"
+    : "bg-white flex items-center topAnimation z-50 w-full justify-between px-10 lg:px-20 xl:px-20 2xl:px-60 py-5";
 
   return (
     <div className="">

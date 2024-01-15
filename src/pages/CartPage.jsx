@@ -33,7 +33,7 @@ const CartPage = () => {
   };
 
   const handleChange = (e, item) => {
-    const inputValue = e.target.value.trim(); // Remove leading/trailing whitespaces
+    const inputValue = e.target.value.trim(); 
     const newQuantity = inputValue !== "" ? parseInt(inputValue, 10) : null;
 
     if (isNaN(newQuantity) && inputValue !== "") {

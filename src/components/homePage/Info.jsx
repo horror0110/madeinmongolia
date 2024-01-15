@@ -2,7 +2,7 @@ import React from "react";
 
 const Info = () => {
   return (
-    <div className="mx-28">
+    <div className="mx-10  lg:mx-20 xl:mx-20 2xl:mx-60">
       <div className="flex justify-between border-b pb-3">
         <h1 className="font-bold text-[18px]">Мэдээ мэдээлэл</h1>
         <button className="bg-mainColor text-white text-[13px] font-medium rounded-full px-2 py-1">
@@ -11,7 +11,7 @@ const Info = () => {
       </div>
 
       <div className="flex justify-center mt-5">
-        <div className="relative w-[600px] h-[300px]  ">
+        <div className="relative w-[50%] h-[300px]  ">
           <img
             src="https://madeinmongolia.asia/uploads/posts/348XeMu5OaU2z5HVBj3WBVOjcnl9SzO5EZdsomqS.jpg"
             alt=""
@@ -23,7 +23,7 @@ const Info = () => {
           </h1>
         </div>
 
-        <div className="relative w-[300px] h-[300px] ">
+        <div className="relative w-[25%] h-[300px] ">
           <img
             src="https://madeinmongolia.asia/uploads/posts/5ogwV7GBIWWu2PK1ystbtzBfPsnEtKDGVOTGfdjc.jpg"
             alt=""
@@ -35,7 +35,7 @@ const Info = () => {
           </h1>
         </div>
 
-        <div className="relative w-[300px] h-[300px]">
+        <div className="relative w-[25%] h-[300px]">
           <img
             src="https://madeinmongolia.asia/uploads/posts/ij6L5cgmT7dCcHfgo2ShYQXD4wOpRc9JcMq5F11K.jpg"
             alt=""

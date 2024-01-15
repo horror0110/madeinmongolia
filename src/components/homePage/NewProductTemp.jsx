@@ -7,8 +7,8 @@ const NewProductTemp = ({ product }) => {
   const { getModal } = useContext(GlobalContext);
 
   return (
-    <div className="relative flex flex-col gap-1 mx-auto border shadow  p-3 hover:shadow-2xl">
-      <Link to={`/product/${product.slug}`} className="w-full h-[200px]">
+    <div className="relative flex flex-col max-w-[250px] gap-1 mx-auto border shadow  p-3 hover:shadow-2xl">
+      <Link to={`/product/${product.slug}`} className="w-full h-[230px]">
         <img
           src={`https://madeinmongolia.asia/${product.thumbnail_image}`}
           className="object-cover h-full w-full"

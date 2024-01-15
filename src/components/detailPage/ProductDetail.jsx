@@ -42,19 +42,17 @@ const ProductDetail = ({ product }) => {
 
   return (
     products && (
-      <div className="flex gap-8 justify-center items-start mt-5">
+      <div className="flex justify-center gap-10 items-start mt-5">
         {/**** detail banner */}
 
-        <div className=" ">
-          <div className="">
+        <div className="w-[50%]">
+          <div className="w-full">
             {products && (
               <TransformWrapper>
                 <TransformComponent>
                   <img
                     src={`https://madeinmongolia.asia/${products.photos[imageActive]}`}
                     alt="test"
-                    width={550}
-                    height={550}
                   />
                 </TransformComponent>
               </TransformWrapper>
@@ -143,7 +141,7 @@ const ProductDetail = ({ product }) => {
               </div>
             )}
 
-            <div className="flex items-center gap-2 mt-8">
+            <div className="flex items-center gap-2 mt-8 w-full">
               {/** yellow card ***/}
 
               <YellowCard product={products} />
@@ -173,10 +171,10 @@ const ProductDetail = ({ product }) => {
             <StorePay />
             {/*** storepay ***/}
 
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 w-full">
               {/** INCREASE AND DECREASE */}
 
-              <div className="flex items-center">
+              <div className="flex items-center w-full">
                 <button
                   className="bg-mainColor text-white px-4 py-2 rounded"
                   onClick={decreaseCount}
@@ -187,7 +185,7 @@ const ProductDetail = ({ product }) => {
                   min={1}
                   value={value}
                   type="text"
-                  className="w-[40px] text-xl text-center"
+                  className=" text-xl text-center w-full"
                   onChange={handleChange}
                 />
                 <button
@@ -201,13 +199,13 @@ const ProductDetail = ({ product }) => {
               {/** INCREASE AND DECREASE */}
 
               {/*** BUTTONS ***/}
-              <button className="btn bg-mainColor text-white">
+              <button className="btn w-[40%] bg-mainColor text-white">
                 <IoIosCart />
                 Худалдаж Авах
               </button>
               <button
                 onClick={() => addCart(products, value)}
-                className="btn bg-white border-mainColor border-[2px] text-black"
+                className="btn bg-white border-mainColor border-[2px] text-black w-[40%]"
               >
                 <IoIosCart />
                 Сагсанд Нэмэх

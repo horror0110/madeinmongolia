@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-
 import { CiHeart } from "react-icons/ci";
 import { IoReload } from "react-icons/io5";
 import { IoEyeSharp } from "react-icons/io5";
@@ -13,16 +12,15 @@ const SortProductTemp = ({ product }) => {
       onMouseLeave={() => setHovered(false)}
       className={
         hovered
-          ? `border p-2 flex flex-col shadow relative bottom-2 duration-300 transition-all transform`
-          : `border p-2 flex flex-col relative bottom-0 duration-300 transition-all transform`
+          ? `border p-2 flex flex-col  shadow relative bottom-2 duration-300 transition-all transform`
+          : `border p-2 flex flex-col   relative bottom-0 duration-300 transition-all transform`
       }
     >
       <div className="relative">
         <img
           src={product.image[0]}
-          className="object-cover min-h-[160px]"
-          width={160}
-          height={160}
+          className="object-cover w-full min-h-[220px] h-full"
+          alt={product.title}
         />
 
         <div

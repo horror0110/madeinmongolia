@@ -76,7 +76,7 @@ const Language = () => {
   }, []);
 
   return (
-    <div className="bg-mainColor h-9 w-full text-white md:px-20 px-3 text-xs flex items-center justify-between">
+    <div className="bg-mainColor h-9 w-full text-white px-10 lg:px-20 xl:px-60 text-xs flex items-center justify-between">
       <div className="flex items-center gap-5 md:justify-normal justify-between">
         {/**********/}
 

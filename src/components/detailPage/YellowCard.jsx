@@ -3,7 +3,7 @@ import { FaCheck } from "react-icons/fa6";
 
 const YellowCard = ({ product }) => {
   return (
-    <div className="flex flex-col gap-2 border-yellow-600 border rounded-md p-3 w-[250px] bg-gg">
+    <div className="flex flex-col gap-2 border-yellow-600 border rounded-md p-3 bg-gg w-full">
       <div className="flex items-center gap-2">
         <div className="text-white bg-green-500 rounded-full p-1">
           <FaCheck size={10} />

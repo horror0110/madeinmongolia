@@ -3,7 +3,7 @@ import SortProductTemp from "../filterPage/SortProductTemp";
 
 const SortProduct = ({ data }) => {
   return (
-    <div className="mx-20 my-10">
+    <div className="mx-10  lg:mx-20 xl:mx-20 2xl:mx-60 my-10">
       <div className="flex justify-between items-center border-b pb-5">
         <h1 className=" text-lg font-bold">Хүнс</h1>
         <div className="flex gap-3 text-mainGray ">

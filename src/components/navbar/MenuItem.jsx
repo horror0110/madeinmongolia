@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import menu from "../../utils/menu.json";
+
 import Sidebar from "./Sidebar";
 import Shadow from "./Shadow";
-import { Box } from "@mui/material";
 
 const MenuItem = () => {
   const [open, setOpen] = useState(false);
@@ -30,24 +29,13 @@ const MenuItem = () => {
     },
   ];
   return (
-    <Box borderTop={1} borderColor={"#c5c6d0"}>
-      <Box marginX={"80px"} marginTop={"12px"}>
-        <Box
-          display={"flex"}
-          justifyContent={"space-between"}
-          alignItems={"start"}
-          fontSize={"12px"}
-        >
-          <Box display={"flex"} alignItems={"start"} gap={"40px"}>
-            <Box
+    <div className="px-10 lg:px-20 xl:px-20 2xl:px-60 border-t  border-t-[#c5c6d0] py-2">
+      <div>
+        <div className="text-[12px] flex justify-between items-center">
+          <div className="flex items-center gap-[40px]">
+            <div
               onClick={() => setOpen(true)}
-              display={"flex"}
-              flexDirection={"column"}
-              gap={2}
-              alignItems={"center"}
-              padding={"8px"}
-              width={"max-content"}
-              className=" bg-gray-200"
+              className="flex flex-col gap-2 items-center p-1 w-max bg-gray-200"
             >
               <img
                 src="https://madeinmongolia.asia/assets/frontend/images/icons/category2_icon.gif"
@@ -56,39 +44,33 @@ const MenuItem = () => {
                 height={25}
               />
               <span className="text-[11px]">Ангилал</span>
-            </Box>
+            </div>
 
             {links.map((link, index) => (
               <Link
-               to=""
+                to=""
                 key={index}
                 className="hover:border-b-[2px] border-b-mainColor text-[11px] text-[#2c2c2c]"
-                
               >
                 {link.title}
               </Link>
             ))}
-          </Box>
+          </div>
 
-          <Box
-            fontSize={"11px"}
-            display={"flex"}
-            alignItems={"center"}
-            gap={"20px"}
-          >
+          <div className="text-[11px] flex items-center gap-[20px]">
             <Link to="" className="hover:border-b-[2px] border-b-mainColor">
               ШИНЭ
             </Link>
             <Link to="" className="hover:border-b-[2px] border-b-mainColor">
               ҮЙЛДВЭРЛЭ
             </Link>
-          </Box>
-        </Box>
+          </div>
+        </div>
 
         <Sidebar open={open} setOpen={setOpen} />
         <Shadow open={open} />
-      </Box>
-    </Box>
+      </div>
+    </div>
   );
 };
 

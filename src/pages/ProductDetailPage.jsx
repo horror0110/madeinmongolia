@@ -95,14 +95,14 @@ const ProductDetailPage = () => {
 
       {/** StorePay menu bar */}
 
-      <div ref={containerRef} className="mt-2 mx-32">
+      <div ref={containerRef} className="mt-2 mx-10 md:mx-10 lg:mx-20 xl:mx-20 2xl:mx-60  ">
         {/*** links ***/}
 
         <Way links={realData[0]} />
 
         {/*** links ***/}
         {/** Танд санал болгох***/}
-        <div className="flex items-center gap-20 mt-3 border border-gray-100 shadow p-5 w-max">
+        <div className="flex items-center gap-20 mt-3 border border-gray-100 shadow p-5">
           <h1 className="text-semibold text-xl font-light text-darkGray">
             Танд санал болгох
           </h1>

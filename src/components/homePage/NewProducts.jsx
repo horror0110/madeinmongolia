@@ -1,17 +1,17 @@
 import React from "react";
 import NewProductTemp from "../../components/homePage/NewProductTemp";
-import {Link} from "react-router-dom"
-
+import { Link } from "react-router-dom";
 
 const NewProducts = ({ newProducts, header }) => {
   return (
-    <div className="mt-3 md:mx-20">
+    <div className="mt-3  mx-10  lg:mx-20 xl:mx-20 2xl:mx-60">
       {header && <img src={header} alt="" className="my-5" />}
 
       <div className="grid md:grid-cols-5 grid-cols-2 gap-2">
-        {newProducts && newProducts.map((product, index) => (
-          <NewProductTemp key={product.id} product={product} />
-        ))}
+        {newProducts &&
+          newProducts.map((product, index) => (
+            <NewProductTemp key={product.id} product={product} />
+          ))}
       </div>
 
       <img
