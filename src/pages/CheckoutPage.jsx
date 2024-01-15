@@ -10,7 +10,7 @@ import Footer from "../components/Footer";
 
 const CheckoutPage = () => {
   const data = [
-    {
+  {
       id: 1,
       title: "Хүргэхийн өмнө залгах",
     },

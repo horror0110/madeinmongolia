@@ -2,9 +2,11 @@ import React, { useContext, useEffect, useState } from "react";
 import { GlobalContext } from "../../context/GlobalContext";
 import { IoMdClose } from "react-icons/io";
 import { Modal } from "@mui/material";
+import thousandify from "thousandify";
 
 const ModalWindow = () => {
-  const { getModalData, openModal, setOpenModal , addCart } = useContext(GlobalContext);
+  const { getModalData, openModal, setOpenModal, addCart } =
+    useContext(GlobalContext);
 
   const [activeImg, setActiveImg] = useState(0);
   const [value, setValue] = useState(1);
@@ -29,7 +31,7 @@ const ModalWindow = () => {
     }
   }, [getModalData, setModalData]);
 
-  console.log(modalData)
+  console.log(modalData);
 
   const increaseCount = () => {
     setValue((prev) => parseInt(prev) + 1);
@@ -48,7 +50,7 @@ const ModalWindow = () => {
   const calculateTotalPrice = () => {
     const total = modalData.calculable_price * value;
 
-    return total
+    return total;
   };
 
   return (
@@ -157,11 +159,14 @@ const ModalWindow = () => {
                   <div className="text-mainGray text-[13px]">Нийт үнэ:</div>
 
                   <div className="font-semibold text-mainColor text-[26px]">
-                    {calculateTotalPrice()}
+                    {thousandify(calculateTotalPrice())}
                   </div>
                 </div>
 
-                <button onClick={()=> addCart(modalData , value)} className="bg-mainColor text-white w-max px-3 py-2 font-extralight rounded-md">
+                <button
+                  onClick={() => addCart(modalData, value)}
+                  className="bg-mainColor text-white w-max px-3 py-2 font-extralight rounded-md"
+                >
                   Сагсанд нэмэх
                 </button>
               </div>

@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { GlobalContext } from "../../context/GlobalContext";
+import thousandify from "thousandify";
 
 const CheckoutSidebar = () => {
   const { basket } = useContext(GlobalContext);
@@ -28,13 +29,13 @@ const CheckoutSidebar = () => {
             <h1>ТӨЛӨХ ДҮН</h1>
           </div>
           {basket.map((el, index) => (
-            <div className="flex items-center  justify-between">
+            <div key={el.id} className="flex items-center  justify-between">
               <h1 className="font-bold text-[14px]">
                 {el.name} × {el.quantity}
               </h1>
 
               <h1 className="text-[14px] font-bold">
-                {el.calculable_price * el.quantity}
+                {thousandify(el.calculable_price * el.quantity)}
               </h1>
             </div>
           ))}
@@ -42,7 +43,7 @@ const CheckoutSidebar = () => {
           <div className="flex  text-[12px] items-center  justify-between">
             <h1 className="font-bold">ТӨЛӨХ ДҮН</h1>
 
-            <h1 className="font-bold text-[14px]">{totalPrice}</h1>
+            <h1 className="font-bold text-[14px]">{thousandify(totalPrice)}</h1>
           </div>
         </div>
       </div>

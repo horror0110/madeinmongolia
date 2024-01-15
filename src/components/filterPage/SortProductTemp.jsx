@@ -12,14 +12,14 @@ const SortProductTemp = ({ product }) => {
       onMouseLeave={() => setHovered(false)}
       className={
         hovered
-          ? `border p-2 flex flex-col  shadow relative bottom-2 duration-300 transition-all transform`
-          : `border p-2 flex flex-col   relative bottom-0 duration-300 transition-all transform`
+          ? `border p-1 flex flex-col w-[220px] h-[300px]  shadow relative bottom-2 duration-300 transition-all transform`
+          : `border p-1 flex flex-col  w-[220px] h-[300px]  relative bottom-0 duration-300 transition-all transform`
       }
     >
       <div className="relative">
         <img
           src={product.image[0]}
-          className="object-cover w-full min-h-[220px] h-full"
+          className="object-cover w-full h-full min-h-[210px]"
           alt={product.title}
         />
 

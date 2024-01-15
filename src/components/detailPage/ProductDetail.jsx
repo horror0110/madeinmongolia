@@ -10,11 +10,12 @@ import { CiHeart } from "react-icons/ci";
 import { Link } from "react-router-dom";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import { GlobalContext } from "../../context/GlobalContext";
+import thousandify from "thousandify"
 
 const ProductDetail = ({ product }) => {
   const [value, setValue] = useState(1);
 
-  const { setBasket, basket, addCart } = useContext(GlobalContext);
+  const { addCart } = useContext(GlobalContext);
 
   const products = product[0];
 
@@ -161,7 +162,7 @@ const ProductDetail = ({ product }) => {
 
               {products && (
                 <span className="text-mainColor text-2xl font-bold flex items-center gap-1">
-                  {calculateTotalPrice()}
+                  {thousandify(calculateTotalPrice())}
                   {/* <span className="text-gray-500 text-[15px] font-normal"></span> */}
                 </span>
               )}
@@ -205,7 +206,7 @@ const ProductDetail = ({ product }) => {
               </button>
               <button
                 onClick={() => addCart(products, value)}
-                className="btn bg-white border-mainColor border-[2px] text-black w-[40%]"
+                className="btn bg-white border-mainColor border-[2px] text-black w-[35%]"
               >
                 <IoIosCart />
                 Сагсанд Нэмэх
