@@ -13,12 +13,13 @@ import "swiper/css";
 import { FaAngleRight, FaAngleLeft } from "react-icons/fa6";
 import { Grid } from "swiper/modules";
 import DetailSidebar from "../components/detailPage/DetailSidebar";
-
-import Way from "../components/detailPage/Way";
+import BreadCrumbComponent from "../components/detailPage/BreadCrumComponent";
 import { useLocation, useParams } from "react-router-dom";
 import { ProductService } from "../service/ProductService";
 
 const ProductDetailPage = () => {
+
+
   const params = useParams();
 
   const [swiper, setSwiper] = useState(null);
@@ -66,6 +67,29 @@ const ProductDetailPage = () => {
     window.scrollTo(0, 0);
   }, [params.name, getId, relatedData]);
 
+
+
+  const breadcrumbList = [
+    {
+      label: realData[0] ? realData[0].categories.category.name : null,
+      dir:  realData[0] ? `/search?category=${realData[0].categories.category.slug}` : null,
+      isCurrent: false,
+      last:false
+    },
+    {
+      label: realData[0] ? realData[0].categories.subcategory.name : null,
+      dir:  realData[0] ? `/search?subcategory=${realData[0].categories.subcategory.slug}` : null,
+      isCurrent: false,
+      last:false
+    },
+    {
+      label: realData[0] ? realData[0].categories.subsubcategory.name : null,
+      dir:  realData[0] ? `/search?subsubcategory=${realData[0].categories.subsubcategory.slug}` : null,
+      isCurrent: false,
+      last:true
+    },
+  ];
+
   const nexto = () => {
     swiper.slideNext();
   };
@@ -98,7 +122,7 @@ const ProductDetailPage = () => {
       <div ref={containerRef} className="mt-2 mx-10 md:mx-10 lg:mx-20 xl:mx-20 2xl:mx-60  ">
         {/*** links ***/}
 
-        <Way links={realData[0]} />
+        <BreadCrumbComponent list={breadcrumbList} />
 
         {/*** links ***/}
         {/** Танд санал болгох***/}
