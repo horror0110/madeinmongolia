@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useRef, useEffect } from "react";
 import YellowCard from "./YellowCard";
 import GrayCard from "./GrayCard";
 import StorePay from "./StorePay";
@@ -10,9 +10,11 @@ import { CiHeart } from "react-icons/ci";
 import { Link } from "react-router-dom";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import { GlobalContext } from "../../context/GlobalContext";
-import thousandify from "thousandify"
+import thousandify from "thousandify";
 
 const ProductDetail = ({ product }) => {
+  const boxRef = useRef();
+  const containerRef = useRef();
   const [value, setValue] = useState(1);
 
   const { addCart } = useContext(GlobalContext);
@@ -47,13 +49,14 @@ const ProductDetail = ({ product }) => {
         {/**** detail banner */}
 
         <div className="w-[50%]">
-          <div className="w-full">
+          <div className="">
             {products && (
               <TransformWrapper>
                 <TransformComponent>
                   <img
                     src={`https://madeinmongolia.asia/${products.photos[imageActive]}`}
                     alt="test"
+                    className=""
                   />
                 </TransformComponent>
               </TransformWrapper>
@@ -86,7 +89,7 @@ const ProductDetail = ({ product }) => {
 
         {/*** detail description ***/}
 
-        <div className=" flex flex-col w-[50%] ">
+        <div className=" flex flex-col w-[50%] h-[1000px] ">
           {products && (
             <h1 className="font-semibold text-[22px] text-mainGray mb-10">
               {products.name}

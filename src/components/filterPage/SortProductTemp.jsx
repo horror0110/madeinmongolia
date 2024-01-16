@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { CiHeart } from "react-icons/ci";
 import { IoReload } from "react-icons/io5";
 import { IoEyeSharp } from "react-icons/io5";
+import { GlobalContext } from "../../context/GlobalContext";
 
 const SortProductTemp = ({ product }) => {
   const [hovered, setHovered] = useState(false);
+
+  const {getModal} = useContext(GlobalContext);
 
   return (
     <div
@@ -26,12 +29,12 @@ const SortProductTemp = ({ product }) => {
         <div
           className={
             hovered
-              ? `flex absolute gap-10 justify-center p-1 z-30 bg-white transition-transform duration-800 bottom-0  translate-y-0 w-full `
-              : `flex absolute gap-10 justify-center p-1 z-0 bg-white transition-transform duration-800  translate-y-5 w-full `
+              ? `flex cursor-pointer absolute gap-10 justify-center p-1 z-30 bg-white transition-transform duration-800 bottom-0  translate-y-0 w-full `
+              : `flex cursor-pointer absolute gap-10 justify-center p-1 z-0 bg-white transition-transform duration-800  translate-y-5 w-full `
           }
         >
           <CiHeart />
-          <IoEyeSharp />
+          <IoEyeSharp onClick={()=> getModal(product.id)} />
           <IoReload />
         </div>
       </div>

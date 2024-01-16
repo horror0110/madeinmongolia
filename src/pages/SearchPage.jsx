@@ -20,7 +20,7 @@ const SearchPage = () => {
     <div>
       <Navbar />
       <ModalWindow/>
-      <Way links={links} />
+      {/* <Way links={links} /> */}
       <SortPageBanner />
 
       <div className="flex items-start gap-5 mx-20 mt-5">

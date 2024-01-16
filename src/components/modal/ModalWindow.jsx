@@ -21,8 +21,6 @@ const ModalWindow = () => {
 
       const modalData = await res.json();
 
-      console.log(modalData.data[0]);
-
       setModalData(modalData.data[0]);
     };
 
