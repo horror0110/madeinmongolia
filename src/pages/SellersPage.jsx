@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Navbar from "../components/navbar/Navbar";
 import Footer from "../components/Footer";
 import { ProductService } from "../service/ProductService";
+import { Link } from "react-router-dom";
 
 const SellersPage = () => {
   const [shops, setShops] = useState([]);
@@ -16,8 +17,8 @@ const SellersPage = () => {
       <Navbar />
 
       <div className="grid cursor-pointer grid-cols-3 gap-5 2xl:mx-72 xl:mx-20 mx-10 mt-10 mb-40">
-        {shops.map((shop, el) => (
-          <div className="flex  items-center gap-3 border rounded-md p-3">
+        {shops.map((shop, index) => (
+          <Link key={index} to={`/shops/visit/${shop.id}`} className="flex  items-center gap-3 border rounded-md p-3">
             <img
               src={`https://madeinmongolia.asia/${shop.logo}`}
               alt=""
@@ -26,7 +27,7 @@ const SellersPage = () => {
             />
 
             <h1 className="text-[13px] text-shopColor">{shop.name}</h1>
-          </div>
+          </Link>
         ))}
       </div>
 

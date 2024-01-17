@@ -79,5 +79,13 @@ export const ProductService = {
       .then((res) => res.json())
       .then((d) => d.data);
   },
+  getShopDetail(params){
+    return fetch(
+      `https://madeinmongolia.asia/api/v2/shops/details/${params}`
+    )
+      .then((res) => res.json())
+      .then((d) => d.data);
+  },
+
  
 };

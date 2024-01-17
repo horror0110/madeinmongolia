@@ -61,7 +61,7 @@ const ModalWindow = () => {
           open={openModal}
           className=""
         >
-          <div className="2xl:p-10 p-5 rounded-md bg-white fixed   left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 w-[60%] h-[50%] overflow-y-scroll">
+          <div className="2xl:p-10 p-10 rounded-md bg-white fixed   left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 w-[80%] h-[80%] overflow-y-scroll">
             <div className="flex gap-10">
               {modalData && (
                 <div className="flex flex-col gap-2">
@@ -84,7 +84,7 @@ const ModalWindow = () => {
               )}
 
               {modalData && (
-                <div className="w-[450px] h-[450px]">
+                <div className="w-[400px] h-[400px]">
                   <img
                     src={`https://madeinmongolia.asia/${modalData.photos[activeImg]}`}
                     alt=""
