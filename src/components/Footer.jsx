@@ -1,12 +1,17 @@
-import React from "react";
+import React, { useContext , useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FaFacebookF } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
+import { GlobalContext } from "../context/GlobalContext";
 
 const Footer = () => {
+  const { handleLogout, userInfo } = useContext(GlobalContext);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    }, []);
   return (
-    <div className="bg-darkBlue w-full px-20 pt-16 pb-8 text-white">
+    <div className="bg-darkBlue w-full px-36 pt-16 pb-8 text-footerGray">
       <div className="flex gap-10">
         <div className="w-[40%]">
           <img
@@ -19,19 +24,19 @@ const Footer = () => {
             Үндэсний үйлдвэрлэгчдийн нэгдсэн мэдээллийн сан
           </p>
 
-          <div className="flex items-center ">
+          <div className="flex items-center h-9">
             <input
               type="text"
               placeholder="Таны И-мэйл хаяг"
-              className="rounded-md p-1 py-1 w-[50%] text-black placeholder:text-[14px] placeholder:text-gray-300 placeholder:px-2"
+              className="rounded-md h-full p-1 py-1 w-[50%] text-black placeholder:text-[14px] placeholder:text-gray-300 placeholder:px-2"
             />
-            <button className="bg-darkBlue text-white font-[300] px-3 py-2 rounded-md">
+            <button className="bg-linkColor h-full text-white font-[300] text-[14px] px-3 py-2 rounded-md">
               Дагах
             </button>
           </div>
         </div>
 
-        <div className="w-[20%]">
+        <div className="w-[30%] ml-20">
           <h1 className="text-[13px] text-grayColor font-semibold mb-2">
             ХОЛБОО БАРИХ
           </h1>
@@ -52,7 +57,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="w-[20%]">
+        <div className="w-[15%]">
           <h1 className="text-[12px] text-grayColor font-semibold mb-2">
             ХЭРЭГТЭЙ ХОЛБООС
           </h1>
@@ -63,22 +68,27 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="w-[20%]">
+        <div className="w-[15%]">
           <h1 className="text-[12px] text-grayColor font-semibold mb-2">
             МИНИЙ БҮРТГЭЛ
           </h1>
 
           <div className="flex flex-col gap-2 text-[12.8px] mb-4 text-[#818a91]">
-            <Link to="">www.codehub.mn</Link>
-            <Link to="">www.mimtrading.mn</Link>
-            <Link to="">www.jd.com</Link>
-            <Link to="">www.jd.com</Link>
+            {userInfo && (
+              <Link onClick={handleLogout} to="">
+                Гарах
+              </Link>
+            )}
+
+            <Link to="">Захиалгын түүх</Link>
+            <Link to="">Миний хадгалсан бараа</Link>
+            <Link to="">Захиалга шалгах</Link>
           </div>
 
-          <div className="text-[12px] font-semibold ">
+          <div className="text-[12px] grayColor ">
             ҮЙЛДВЭРЛЭГЧЭЭР <br /> БҮРТГҮҮЛЭХ
           </div>
-          <button className="bg-gray-600 p-2 rounded-md mt-2">
+          <button className=" bg-linkColor text-footerGray text-[14px] p-2 rounded-md mt-2">
             Бүртгүүлэх
           </button>
         </div>
@@ -95,7 +105,7 @@ const Footer = () => {
           <button>Нууцлалын баталгаа</button>
         </div>
 
-        <div className="flex gap-2 w-[20%]">
+        <div className="flex gap-2 ml-20 w-[20%]">
           <div className="bg-[#3b579d] p-2 rounded-sm">
             <FaFacebookF size={16} />
           </div>

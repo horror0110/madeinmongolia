@@ -24,7 +24,6 @@ const Home = () => {
   const [gridProducts, setGridProducts] = useState([]);
 
   // fetch
-
   useEffect(() => {
     ProductService.getNew().then((products) => {
       setNewProducts(products);
@@ -48,6 +47,7 @@ const Home = () => {
       setGridProducts(products);
     });
   }, []);
+
   return (
     <div>
       <Navbar />

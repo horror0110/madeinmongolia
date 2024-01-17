@@ -9,7 +9,6 @@ module.exports = {
         graygray: "rgb(129, 138, 145)",
         mainGray: "rgb(51, 51, 51)",
         darkGray: "rgb(52, 52, 52)",
-        
       },
       backgroundColor: {
         mainColor: "#263459",
@@ -25,6 +24,7 @@ module.exports = {
       textColor: {
         mainColor: "#263459",
         grayColor: "rgba(255, 255, 255, 0.8)",
+        footerGray: "rgb(255, 255, 255)",
         blackColor: "rgb(30, 30, 28)",
         mainGray: "rgb(51, 51, 51)",
         darkBlue: "rgb(38, 52, 89)",
@@ -36,7 +36,6 @@ module.exports = {
         darkColor: "rgb(17, 17, 17)",
         graygray: "rgb(129, 138, 145)",
         buttonGray: "rgb(43, 43, 44)",
-        
       },
     },
   },

@@ -51,6 +51,34 @@ export const GlobalProvider = ({ children }) => {
     setOpenModal(true);
   };
 
+
+  const handleLogout = async (e) => {
+    e.preventDefault();
+
+    try {
+      const res = await fetch(
+        "https://madeinmongolia.asia/api/v2/auth/logout",
+
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${userInfo?.access_token ?? ""}`,
+          },
+        }
+      );
+
+      const isCorrect = await res.json();
+
+      if (isCorrect.result) {
+        localStorage.removeItem("user");
+        localStorage.removeItem("cart");
+        window.location.reload(true);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <GlobalContext.Provider
       value={{
@@ -63,6 +91,7 @@ export const GlobalProvider = ({ children }) => {
         setBasket,
         basket,
         addCart,
+        handleLogout
       }}
     >
       <div>{children}</div>

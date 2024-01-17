@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { GlobalContext } from "../../context/GlobalContext";
 
 const Language = () => {
-  const { userInfo, setUserInfo } = useContext(GlobalContext);
+  const { userInfo, setUserInfo , handleLogout } = useContext(GlobalContext);
   const langs = [
     {
       id: 1,
@@ -25,32 +25,6 @@ const Language = () => {
 
   const [open, setOpen] = useState(false);
 
-  const handleLogout = async (e) => {
-    e.preventDefault();
-
-    try {
-      const res = await fetch(
-        "https://madeinmongolia.asia/api/v2/auth/logout",
-
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${userInfo?.access_token ?? ""}`,
-          },
-        }
-      );
-
-      const isCorrect = await res.json();
-
-      if (isCorrect.result) {
-        localStorage.removeItem("user");
-        localStorage.removeItem("cart");
-        window.location.reload(true);
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  };
 
   const [clickedItems, setClickedItems] = useState({
     title: langs[0].title,
