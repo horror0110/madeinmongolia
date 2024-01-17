@@ -36,6 +36,7 @@ module.exports = {
         darkColor: "rgb(17, 17, 17)",
         graygray: "rgb(129, 138, 145)",
         buttonGray: "rgb(43, 43, 44)",
+        shopColor: "rgb(95, 95, 95)"
       },
     },
   },

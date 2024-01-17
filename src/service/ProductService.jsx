@@ -64,5 +64,20 @@ export const ProductService = {
     )
       .then((res) => res.json())
       .then((d) => d.data);
-  }
+  },
+  getShops(){
+    return fetch(
+      `https://madeinmongolia.asia/api/v2/section-banner/11`
+    )
+      .then((res) => res.json())
+      .then((d) => d.data);
+  },
+  getShopList(){
+    return fetch(
+      `https://madeinmongolia.asia/api/v2/web/shops`
+    )
+      .then((res) => res.json())
+      .then((d) => d.data);
+  },
+ 
 };

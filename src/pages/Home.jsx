@@ -15,6 +15,7 @@ import SortProduct from "../components/homePage/SortProduct";
 import Info from "../components/homePage/Info";
 import ModalWindow from "../components/modal/ModalWindow";
 import { ProductService } from "../service/ProductService";
+import ShopCart from "../components/homePage/ShopCart";
 
 const Home = () => {
   const [newProducts, setNewProducts] = useState([]);
@@ -24,6 +25,7 @@ const Home = () => {
   const [emeelProducts, setEmeelProducts] = useState([]);
   const [cartProducts, setCartProducts] = useState([]);
   const [greenGroupProducts, setGreenGroupProducts] = useState([]);
+  const [shops , setShops] = useState([])
 
   // fetch
   useEffect(() => {
@@ -67,6 +69,12 @@ const Home = () => {
     });
   }, []);
 
+  useEffect(() => {
+    ProductService.getShops().then((products) => {
+      setShops(products);
+    });
+  }, []);
+
   return (
     <div>
       <Navbar />
@@ -75,6 +83,7 @@ const Home = () => {
       <NewProducts
         newProducts={newProducts}
         header="https://madeinmongolia.asia/uploads/image_names/web_images/new_products_title/VZAH90jhOEIBihmh8daBrA96HimH6tHQmMm9eB5Z.png"
+        nextButton={true}
       />
       <WeekBest
         data={weekProducts}
@@ -84,6 +93,7 @@ const Home = () => {
         data={cartProducts}
         header="https://madeinmongolia.asia/uploads/image_names/web_images/big_swiper/gmh5vrBqUN6BOenmWiOOzo5O3eKqqansOmWoKAIo.png"
       />
+      <ShopCart data={shops} />
       <BannerTemp img="https://madeinmongolia.asia/uploads/home_section_big_one_banner//JHjv5HeiyRZHqBlRCxyhfDBKTfJiz0PUJ8DNAIne.png" />
       <PayChance />
       <WeekBest

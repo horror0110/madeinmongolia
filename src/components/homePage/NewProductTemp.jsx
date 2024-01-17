@@ -16,7 +16,7 @@ const NewProductTemp = ({ product }) => {
       </Link>
 
       {product.new && (
-        <span className="text-white bg-[#009f7f] w-max absolute left-4 top-5 text-[13px] p-1 rounded-md">
+        <span className="text-white bg-p[#009f7f] w-max absolute left-4 top-5 text-[13px] p-1 rounded-md">
           ШИНЭ
         </span>
       )}

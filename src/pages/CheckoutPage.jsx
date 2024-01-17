@@ -10,7 +10,7 @@ import Footer from "../components/Footer";
 
 const CheckoutPage = () => {
   const data = [
-  {
+    {
       id: 1,
       title: "Хүргэхийн өмнө залгах",
     },
@@ -48,8 +48,6 @@ const CheckoutPage = () => {
     });
   };
 
-  console.log(emptyArr);
-
   return (
     <div>
       <Navbar />
@@ -61,6 +59,7 @@ const CheckoutPage = () => {
           <div className="grid grid-cols-2 gap-3 ">
             {address.map((el, index) => (
               <div
+                key={index}
                 className={
                   clickedRadio !== index
                     ? `flex items-start border p-5 gap-5 rounded-md w-full shadow`
@@ -183,7 +182,7 @@ const CheckoutPage = () => {
               {data.map((el, index) => (
                 <button
                   onClick={() => handleClick(el.title, index)}
-                  key={el.id}
+                  key={index}
                   className={`${buttonClasses[index]} relative`}
                 >
                   {emptyArr.includes(el.title) && (
@@ -199,7 +198,7 @@ const CheckoutPage = () => {
           <CheckoutSidebar />
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 };

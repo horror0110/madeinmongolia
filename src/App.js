@@ -8,6 +8,9 @@ import CartPage from "./pages/CartPage"
 import CheckoutPage from "./pages/CheckoutPage";
 import DeliveryPage from "./pages/DeliveryPage";
 import LoginPage from "./pages/LoginPage";
+import SellersPage from "./pages/SellersPage";
+import EmeelPage from "./pages/EmeelPage";
+import ShopDetailPage from "./pages/ShopDetailPage";
 
 const App = () => {
   return (
@@ -22,6 +25,9 @@ const App = () => {
             <Route path="/checkout" element={<CheckoutPage />} />
             <Route path="/checkout/delivery_info" element={<DeliveryPage />} />
             <Route path="/users/login" element={<LoginPage />} />
+            <Route path="/sellers" element={<SellersPage />} />
+            <Route path="/page/emeel" element={<EmeelPage />} />
+            <Route path="/shops/visit/:name" element={<ShopDetailPage />} />
           </Routes>
         </GlobalProvider>
       </BrowserRouter>
