@@ -1,28 +1,28 @@
 import React, { useState } from "react";
 import { RegisterService } from "../../service/RegisterService";
 
-const RegisterForm = ({ setPageChoose, setPhoneValue }) => {
-  const [phone, setPhone] = useState("");
+const RegisterOTP = ({ setPageChoose, phoneValue }) => {
+  const [otp, setOtp] = useState("");
 
   const handleRegister = (e) => {
     e.preventDefault();
 
     const data = {
-      phone: phone,
+      phone: phoneValue,
+      otp: otp,
     };
 
     try {
-      if (phone.trim() == "") {
+      if (otp.trim() == "") {
         return alert("talbaruudig boglono uu");
       }
 
-      RegisterService.sendOTP(data).then((result) => {
-
-        console.log(result)
+      RegisterService.checkOTP(data).then((result) => {
+        console.log(result);
         if (result.result) {
-          setPageChoose("OTP");
+          setPageChoose("LAST");
 
-          setPhoneValue(phone);
+          // setPhoneValue(phone);
         } else {
           alert(result.message);
         }
@@ -35,31 +35,44 @@ const RegisterForm = ({ setPageChoose, setPhoneValue }) => {
     <div className="flex items-center justify-center h-screen">
       <div className="flex flex-col justify-between w-[450px]">
         <div className="">
+          <h1 className="mb-5 text-xl">Бүртгүүлэх</h1>
           <div className="text-opacityColor cursor-pointer text-[12px] mb-2">
-            Бүртгүүлэх
+            Гар утас
           </div>
 
           <input
             type="number"
-            placeholder="Гар Утасны Дугаар"
+            placeholder=""
             className="input input-bordered w-full"
-            onChange={(e) => {
-              setPhoneValue(e.target.value), setPhone(e.target.value);
-            }}
+            value={phoneValue}
           />
 
-          <div className="flex items-center gap-1 justify-center mt-1">
+          <div className="text-opacityColor mt-3 cursor-pointer text-[12px] mb-2">
+            OTP code
+          </div>
+
+          <input
+            onChange={(e) => setOtp(e.target.value)}
+            type="text"
+            placeholder="****"
+            className="input input-bordered w-full"
+          />
+
+          <div className="flex items-center gap-1 justify-center mt-2">
             <span className="text-darkGray text-[13px] ">
               Та бүртгэлтэй бол
             </span>
-            <button className="text-darkGray text-[13px] font-bold">
+            <button
+              onClick={() => setPageChoose("login")}
+              className="text-darkGray text-[13px] font-bold"
+            >
               Нэвтрэх
             </button>
           </div>
 
           <div className="flex items-center gap-3">
             <button
-              onClick={() => setPageChoose("login")}
+              onClick={() => setPageChoose("register")}
               className="btn my-5 bg-mainColor text-white flex-2"
             >
               Буцах
@@ -86,4 +99,4 @@ const RegisterForm = ({ setPageChoose, setPhoneValue }) => {
   );
 };
 
-export default RegisterForm;
+export default RegisterOTP;

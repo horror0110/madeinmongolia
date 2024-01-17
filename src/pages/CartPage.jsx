@@ -10,7 +10,6 @@ import thousandify from "thousandify";
 
 const CartPage = () => {
   const { basket, setBasket } = useContext(GlobalContext);
-  const [empty, setEmpty] = useState(false);
 
   const increaseCount = (item) => {
     setBasket((prevBasket) => {
@@ -71,9 +70,9 @@ const CartPage = () => {
             {/** Анхааруулга */}
             <WarningCart />
 
-            <div className="flex gap-5 justify-center mx-28 my-10">
+            <div className="flex gap-10 justify-center mx-28 my-10">
               <div className="w-[65%]">
-                <table>
+                <table className="w-full">
                   <tr className="text-[10px] font-bold text-darkGray border-b ">
                     <td></td>
                     <td align="" className="pb-2">

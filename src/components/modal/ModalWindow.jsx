@@ -29,8 +29,6 @@ const ModalWindow = () => {
     }
   }, [getModalData, setModalData]);
 
-  console.log(modalData);
-
   const increaseCount = () => {
     setValue((prev) => parseInt(prev) + 1);
   };
@@ -63,7 +61,7 @@ const ModalWindow = () => {
           open={openModal}
           className=""
         >
-          <div className="p-10 rounded-md bg-white fixed  left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 w-[80%] overflow-y-scroll max-h-[80%]">
+          <div className="2xl:p-10 p-5 rounded-md bg-white fixed   left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 w-[60%] h-[50%] overflow-y-scroll">
             <div className="flex gap-10">
               {modalData && (
                 <div className="flex flex-col gap-2">
@@ -86,27 +84,28 @@ const ModalWindow = () => {
               )}
 
               {modalData && (
-                <img
-                  src={`https://madeinmongolia.asia/${modalData.photos[activeImg]}`}
-                  alt=""
-                  width={450}
-                  height={450}
-                />
+                <div className="w-[450px] h-[450px]">
+                  <img
+                    src={`https://madeinmongolia.asia/${modalData.photos[activeImg]}`}
+                    alt=""
+                    className="object-cover"
+                  />
+                </div>
               )}
 
               <div className="flex flex-col gap-5">
-                <h1 className="text-mainGray font-semibold text-[22px]">
+                <h1 className="text-mainGray font-semibold text-[14px] xl:text-[16px] 2xl:text-[22px]">
                   {modalData.name}
                 </h1>
 
                 <div className="flex gap-1 items-center">
                   <div className="text-mainGray text-[13px] mr-5">Үнэ:</div>
 
-                  <div className="font-semibold text-mainColor text-[26px]">
+                  <div className="font-semibold text-mainColor text-[16px]  2xl:text-[26px]">
                     {modalData.main_price}
                   </div>
 
-                  <div className="text-[13px] text-gray-500">/ширхэг</div>
+                  <div className="2xl:text-[13px] text-[11px] text-gray-500">/ширхэг</div>
                 </div>
 
                 {modalData.choice_options[0] && (
@@ -120,12 +119,12 @@ const ModalWindow = () => {
                 )}
 
                 <div className="flex items-center">
-                  <h1 className="text-mainGray text-[13px]">Тоо ширхэг: </h1>
+                  <h1 className="text-mainGray 2xl:text-[13px] text-[11px]">Тоо ширхэг: </h1>
 
                   {/*** increase decrease */}
                   <div className="flex items-center mx-3 border">
                     <button
-                      className="bg-mainColor text-white px-4 py-2 rounded"
+                      className="bg-mainColor text-white 2xl:px-4 px-3 text-[12px] py-2 rounded"
                       onClick={decreaseCount}
                     >
                       -
@@ -134,12 +133,12 @@ const ModalWindow = () => {
                       min={1}
                       value={value}
                       type="text"
-                      className="w-[40px] text-xl text-center"
+                      className="2xl:w-[40px] w-[30px] 2xl:text-xl text-[14px] text-center"
                       onChange={handleChange}
                     />
                     {/* <span className="mx-4 text-xl">{count}</span> */}
                     <button
-                      className="bg-mainColor text-white px-4 py-2 rounded"
+                      className="bg-mainColor text-white 2xl:px-4 px-3 text-[12px] py-2 rounded"
                       onClick={increaseCount}
                     >
                       +
@@ -148,22 +147,22 @@ const ModalWindow = () => {
 
                   {/*** increase decrease */}
 
-                  <div className="text-mainGray text-[13px]">
+                  <div className="text-mainGray text-[11px] 2xl:text-[13px]">
                     ({modalData.current_stock} ширхэг бэлэн байна)
                   </div>
                 </div>
 
-                <div className="flex items-center gap-2 my-3">
-                  <div className="text-mainGray text-[13px]">Нийт үнэ:</div>
+                <div className="flex items-center gap-2 2xl:my-3 my-1">
+                  <div className="text-mainGray 2xl:text-[13px] text-[11px]">Нийт үнэ:</div>
 
-                  <div className="font-semibold text-mainColor text-[26px]">
+                  <div className="font-semibold text-mainColor 2xl:text-[26px] text-[18px]">
                     {thousandify(calculateTotalPrice())}
                   </div>
                 </div>
 
                 <button
                   onClick={() => addCart(modalData, value)}
-                  className="bg-mainColor text-white w-max px-3 py-2 font-extralight rounded-md"
+                  className="bg-mainColor text-white w-max lg:text-[12px] xl:text-[12px] 2xl:text-[16px]  px-3 py-2 font-extralight rounded-md"
                 >
                   Сагсанд нэмэх
                 </button>

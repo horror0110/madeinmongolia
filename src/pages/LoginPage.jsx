@@ -6,10 +6,14 @@ import LoginForm from "../components/loginPage/LoginForm";
 import RegisterForm from "../components/loginPage/RegisterForm";
 import LoginSecond from "../components/loginPage/LoginSecond";
 import { GlobalContext } from "../context/GlobalContext";
+import RegisterOTP from "../components/loginPage/RegisterOTP";
+import RegisterLast from "../components/loginPage/RegisterLast";
 
 const LoginPage = () => {
   const [pageChoose, setPageChoose] = useState("login");
   const [inputValue, setInputValue] = useState("");
+
+  const [phoneValue , setPhoneValue] = useState("")
   const { userInfo } = useContext(GlobalContext);
   const navigate = useNavigate();
 
@@ -34,7 +38,7 @@ const LoginPage = () => {
 
       {pageChoose == "register" && (
         <div>
-          <RegisterForm setPageChoose={setPageChoose} />
+          <RegisterForm setPhoneValue={setPhoneValue} setPageChoose={setPageChoose} />
         </div>
       )}
 
@@ -45,6 +49,10 @@ const LoginPage = () => {
           setInputValue={setInputValue}
         />
       )}
+
+      {pageChoose == "OTP" && <RegisterOTP setPageChoose={setPageChoose} phoneValue={phoneValue} />}
+
+      {pageChoose == "LAST" && <RegisterLast setPageChoose={setPageChoose} phoneValue={phoneValue} />}
 
       <LoginFooter />
     </div>

@@ -44,4 +44,25 @@ export const ProductService = {
       .then((res) => res.json())
       .then((d) => d.data);
   },
+  getEmeel(){
+    return fetch(
+      `https://madeinmongolia.asia/api/v2/products/big-swiper-3`
+    )
+      .then((res) => res.json())
+      .then((d) => d.data);
+  },
+  getCart(){
+    return fetch(
+      `https://madeinmongolia.asia/api/v2/products/big-swiper-1`
+    )
+      .then((res) => res.json())
+      .then((d) => d.data);
+  },
+  getGreenGroup(){
+    return fetch(
+      `https://madeinmongolia.asia/api/v2/product_tag/2`
+    )
+      .then((res) => res.json())
+      .then((d) => d.data);
+  }
 };

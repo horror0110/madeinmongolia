@@ -5,7 +5,6 @@ import NewProducts from "../components/homePage/NewProducts";
 import Footer from "../components/Footer";
 import WeekBest from "../components/homePage/WeekBest";
 import data from "../utils/product.json";
-import Cards from "../components/homePage/Cards";
 import BannerTemp from "../components/homePage/BannerTemp";
 import PayChance from "../components/homePage/PayChance";
 import GridBanner from "../components/homePage/GridBanner";
@@ -22,6 +21,9 @@ const Home = () => {
   const [weekProducts, setWeekProducts] = useState([]);
   const [weekProducts2, setWeekProducts2] = useState([]);
   const [gridProducts, setGridProducts] = useState([]);
+  const [emeelProducts, setEmeelProducts] = useState([]);
+  const [cartProducts, setCartProducts] = useState([]);
+  const [greenGroupProducts, setGreenGroupProducts] = useState([]);
 
   // fetch
   useEffect(() => {
@@ -48,6 +50,23 @@ const Home = () => {
     });
   }, []);
 
+  useEffect(() => {
+    ProductService.getEmeel().then((products) => {
+      setEmeelProducts(products);
+    });
+  }, []);
+
+  useEffect(() => {
+    ProductService.getCart().then((products) => {
+      setCartProducts(products);
+    });
+  }, []);
+  useEffect(() => {
+    ProductService.getGreenGroup().then((products) => {
+      setGreenGroupProducts(products);
+    });
+  }, []);
+
   return (
     <div>
       <Navbar />
@@ -61,7 +80,10 @@ const Home = () => {
         data={weekProducts}
         header="https://madeinmongolia.asia/uploads/image_names/web_images/big_swiper/0TzSIXAxutDTbLqzoK3vfCkm2zTttRKdtGcvIKSx.png"
       />
-      <Cards data={data} />
+      <WeekBest
+        data={cartProducts}
+        header="https://madeinmongolia.asia/uploads/image_names/web_images/big_swiper/gmh5vrBqUN6BOenmWiOOzo5O3eKqqansOmWoKAIo.png"
+      />
       <BannerTemp img="https://madeinmongolia.asia/uploads/home_section_big_one_banner//JHjv5HeiyRZHqBlRCxyhfDBKTfJiz0PUJ8DNAIne.png" />
       <PayChance />
       <WeekBest
@@ -71,18 +93,18 @@ const Home = () => {
       <GridBanner data={gridProducts[0]} />
       <GridBanner data={gridProducts[1]} />
       <BannerTemp img="https://madeinmongolia.asia/uploads/home_section_big_one_banner//sAHQW6BDavscHhQzfM1VrbAFsG7Tj8vetz9Q3Wjg.png" />
-      <WeekBest
+      {/* <WeekBest
         data={data}
         header="https://madeinmongolia.asia/uploads/image_names/web_images/big_swiper/gmh5vrBqUN6BOenmWiOOzo5O3eKqqansOmWoKAIo.png"
-      />
+      /> */}
 
-      <Sponsor img="https://madeinmongolia.asia/uploads/image_names/web_images/product_tag/xEnox9HnsV1AtEtZ5G95pCTpsuqwqASpb0psBJBY.png" />
-      <NewProducts data={data} />
+      {/* <Sponsor img="https://madeinmongolia.asia/uploads/image_names/web_images/product_tag/xEnox9HnsV1AtEtZ5G95pCTpsuqwqASpb0psBJBY.png" />
+      <NewProducts data={data} /> */}
       <BannerTemp img="https://madeinmongolia.asia/uploads/banners/myrK4MV9gk6i1NYEG2LFZfSRtbBairG81QfjrPsU.png" />
       <Sponsor img="https://madeinmongolia.asia/uploads/image_names/web_images/product_tag_2/6ZxnBhNDF1qEcuvTRGi1L4LNfcNIsxxrvcBUpN7U.png" />
-      <NewProducts data={data} />
-      <BlackBanner data={data} />
-      <Model data={data} />
+      <NewProducts newProducts={greenGroupProducts} header="" />
+      <BlackBanner data={emeelProducts} />
+      {/* <Model data={data} /> */}
       <SortProduct data={data} />
       <Info />
 

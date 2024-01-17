@@ -1,21 +1,15 @@
 import React from "react";
+import WeekBest from "./WeekBest";
 
-const Cards = ({ data }) => {
+const Cart = ({ data }) => {
   return (
-    <div className="flex justify-center mt-10">
-      <div className="grid grid-cols-4 gap-5">
-        {data.map((product, index) => (
-          <img
-            key={product.id}
-            src="https://madeinmongolia.asia/uploads/home_section_banner//qyZWQJpoUKX24uv7LFchiHD0CwfKLLzeLEHbTOnj.png"
-            alt=""
-            width={250}
-            height={250}
-          />
-        ))}
+    <div className="my-5">
+    
+      <div className="">
+        <WeekBest data={data} />
       </div>
     </div>
   );
 };
 
-export default Cards;
+export default Cart;

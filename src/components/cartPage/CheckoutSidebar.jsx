@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { GlobalContext } from "../../context/GlobalContext";
 import thousandify from "thousandify";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 
 const CheckoutSidebar = () => {
   const { basket } = useContext(GlobalContext);
@@ -8,6 +9,9 @@ const CheckoutSidebar = () => {
   const totalPrice = basket.reduce((total, item) => {
     return total + item.calculable_price * item.quantity;
   }, 0);
+
+  let location = useLocation();
+  let navigate = useNavigate();
 
   return (
     <>
@@ -48,14 +52,36 @@ const CheckoutSidebar = () => {
         </div>
       </div>
 
-      <div className="flex w-full justify-center items-center gap-2 mt-5 text-white text-[12px] font-bold">
-        <button className="bg-mainColor px-10 py-3 rounded-md w-full">
-          Буцах
+      {location.pathname === "/checkout/delivery_info" ? (
+        <button className="bg-coralColor  w-full my-5 text-white rounded-md py-3 hover:shadow-lg">
+          ТӨЛБӨР ТӨЛӨХ
         </button>
-        <button className="bg-coralColor px-10 py-3 rounded-md w-full">
-          Үргэлжлүүлэх
+      ) : location.pathname === "/checkout/payment_select" ? (
+        <button className="bg-coralColor  w-full my-5 text-white rounded-md py-3 hover:shadow-lg">
+          ЗАХИАЛГА ДУУСГАХ
         </button>
-      </div>
+      ) : (
+        <div className="flex w-full justify-center items-center gap-2 mt-5 text-white text-[12px] font-bold">
+          <button
+            onClick={() => navigate(-1)}
+            className="bg-mainColor px-10 py-3 rounded-md w-full"
+          >
+            Буцах
+          </button>
+          <Link
+            to={
+              location.pathname === "/cart"
+                ? "/checkout"
+                : location.pathname === "/checkout"
+                ? "/checkout/delivery_info"
+                : null
+            }
+            className="bg-coralColor px-10 py-3 rounded-md w-full text-center"
+          >
+            Үргэлжлүүлэх
+          </Link>
+        </div>
+      )}
     </>
   );
 };
