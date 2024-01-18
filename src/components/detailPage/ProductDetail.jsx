@@ -11,10 +11,10 @@ import { Link } from "react-router-dom";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import { GlobalContext } from "../../context/GlobalContext";
 import thousandify from "thousandify";
+import "react-loading-skeleton/dist/skeleton.css";
 
-const ProductDetail = ({ product }) => {
-  const boxRef = useRef();
-  const containerRef = useRef();
+
+const ProductDetail = ({ product, loading }) => {
   const [value, setValue] = useState(1);
 
   const { addCart } = useContext(GlobalContext);
@@ -42,6 +42,7 @@ const ProductDetail = ({ product }) => {
 
     return total;
   };
+
 
   return (
     products && (

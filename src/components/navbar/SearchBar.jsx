@@ -5,7 +5,7 @@ const SearchBar = () => {
     <div className="hidden md:flex items-center bg-gray-100 px-2">
       <input
         type="text"
-        placeholder="I m shopping for..."
+        placeholder="Хайх үгээ оруулна уу..."
         className=" bg-gray-100 placeholder:text-gray-500 placeholder:text-[14px] p-2 focus:outline-none w-96"
       />
       <img

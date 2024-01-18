@@ -16,6 +16,8 @@ import DetailSidebar from "../components/detailPage/DetailSidebar";
 import BreadCrumbComponent from "../components/detailPage/BreadCrumComponent";
 import { useParams } from "react-router-dom";
 import { ProductService } from "../service/ProductService";
+import DetailSkeleton from "../components/skeletons/productDetailPage/DetailSkeleton";
+import SuggestSkeleton from "../components/skeletons/productDetailPage/SuggestSkeleton";
 
 const ProductDetailPage = () => {
   const params = useParams();
@@ -33,10 +35,18 @@ const ProductDetailPage = () => {
   const [getId, setGetId] = useState(null);
   const containerRef = useRef(null);
 
+  const [loading, setLoading] = useState(true);
+
+  const [loading2, setLoading2] = useState(true);
+
   //fetch
 
   useEffect(() => {
     ProductService.getDetail(params.name).then((products) => {
+      setTimeout(() => {
+        setLoading(false);
+      }, 2000);
+
       setGetId(products[0].id);
 
       setRealData(products);
@@ -46,6 +56,9 @@ const ProductDetailPage = () => {
   useEffect(() => {
     if (getId !== null) {
       ProductService.getRelated(getId).then((products) => {
+        setTimeout(() => {
+          setLoading2(false);
+        }, 2000);
         setRelatedData(products);
 
         setSliceData(products.slice(0, 6));
@@ -136,14 +149,18 @@ const ProductDetailPage = () => {
             Танд санал болгох
           </h1>
 
-          <SuggestProduct data={sliceData} />
+          {loading2 ? <SuggestSkeleton /> : <SuggestProduct data={sliceData} />}
         </div>
 
         {/** Танд санал болгох***/}
 
         {/**** product detail ***/}
 
-        <ProductDetail product={realData} />
+        {loading ? (
+          <DetailSkeleton />
+        ) : (
+          <ProductDetail product={realData} loading={loading} />
+        )}
 
         {/**** product detail ***/}
 

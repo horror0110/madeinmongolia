@@ -13,7 +13,7 @@ const Navbar = () => {
 
   // scroll animation
   const changeNav = () => {
-    if (window.scrollY >= 180) {
+    if (window.scrollY >= 140) {
       setVisible(true);
     } else {
       setVisible(false);

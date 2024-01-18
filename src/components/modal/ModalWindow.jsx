@@ -61,7 +61,7 @@ const ModalWindow = () => {
           open={openModal}
           className=""
         >
-          <div className="2xl:p-10 p-10 rounded-md bg-white fixed   left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 w-[80%] h-[80%] overflow-y-scroll">
+          <div className="2xl:p-10 p-10 rounded-md bg-white fixed   left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 xl:w-[80%] xl:h-[60%] 2xl:h-[50%] 2xl:w-[50%] overflow-y-scroll">
             <div className="flex gap-10">
               {modalData && (
                 <div className="flex flex-col gap-2">
@@ -105,7 +105,9 @@ const ModalWindow = () => {
                     {modalData.main_price}
                   </div>
 
-                  <div className="2xl:text-[13px] text-[11px] text-gray-500">/ширхэг</div>
+                  <div className="2xl:text-[13px] text-[11px] text-gray-500">
+                    /ширхэг
+                  </div>
                 </div>
 
                 {modalData.choice_options[0] && (
@@ -119,7 +121,9 @@ const ModalWindow = () => {
                 )}
 
                 <div className="flex items-center">
-                  <h1 className="text-mainGray 2xl:text-[13px] text-[11px]">Тоо ширхэг: </h1>
+                  <h1 className="text-mainGray 2xl:text-[13px] text-[11px]">
+                    Тоо ширхэг:{" "}
+                  </h1>
 
                   {/*** increase decrease */}
                   <div className="flex items-center mx-3 border">
@@ -153,7 +157,9 @@ const ModalWindow = () => {
                 </div>
 
                 <div className="flex items-center gap-2 2xl:my-3 my-1">
-                  <div className="text-mainGray 2xl:text-[13px] text-[11px]">Нийт үнэ:</div>
+                  <div className="text-mainGray 2xl:text-[13px] text-[11px]">
+                    Нийт үнэ:
+                  </div>
 
                   <div className="font-semibold text-mainColor 2xl:text-[26px] text-[18px]">
                     {thousandify(calculateTotalPrice())}

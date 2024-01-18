@@ -8,11 +8,10 @@ import React, {
 
 import { GlobalContext } from "../../context/GlobalContext";
 import { Link } from "react-router-dom";
-import {useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 
 const NavIcons = () => {
   const [openBasket, setOpenBasket] = useState(false);
-
 
   const navigate = useNavigate();
   const { userInfo, basket } = useContext(GlobalContext);
@@ -84,8 +83,8 @@ const NavIcons = () => {
 
       {/*** basket ***/}
       <div
-       onClick={()=> navigate("/users/login")}
-        data-tip="Нэвтрэх"
+        onClick={() => navigate("/users/login")}
+        data-tip={!userInfo ? "Нэвтрэх" : null}
         className="hidden md:block tooltip tooltip-left cursor-pointer"
       >
         <img

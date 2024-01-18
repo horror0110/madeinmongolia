@@ -36,34 +36,37 @@ module.exports = {
         darkColor: "rgb(17, 17, 17)",
         graygray: "rgb(129, 138, 145)",
         buttonGray: "rgb(43, 43, 44)",
-        shopColor: "rgb(95, 95, 95)"
+        buttonDarkGray: "rgb(44, 44, 44)",
+        shopColor: "rgb(95, 95, 95)",
+        footerColor: "rgb(44, 62, 80)",
+        oceanBlue: "rgb(44, 106, 243)"
       },
     },
   },
-  daisyui: {
-    themes: [
-      {
-        mytheme: {
-          primary: "#0039ff",
+  // daisyui: {
+  //   themes: [
+  //     {
+  //       mytheme: {
+  //         primary: "#0039ff",
 
-          secondary: "#00d500",
+  //         secondary: "#00d500",
 
-          accent: "#007000",
+  //         accent: "#007000",
 
-          neutral: "#0b110f",
+  //         neutral: "#0b110f",
 
-          "base-100": "#fdf9ff",
+  //         "base-100": "#fdf9ff",
 
-          info: "#00bcff",
+  //         info: "#00bcff",
 
-          success: "#4e8200",
+  //         success: "#4e8200",
 
-          warning: "#ffd100",
+  //         warning: "#ffd100",
 
-          error: "#de0000",
-        },
-      },
-    ],
-  },
+  //         error: "#de0000",
+  //       },
+  //     },
+  //   ],
+  // },
   plugins: [require("daisyui")],
 };

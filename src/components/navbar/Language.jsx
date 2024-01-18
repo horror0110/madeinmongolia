@@ -101,8 +101,8 @@ const Language = () => {
       </div>
 
       <div className=" gap-3 hidden md:flex">
-        <Link to="/">Бидний тухай</Link>
-        <Link to="/">Захиалга шалгах</Link>
+        <Link to="/about">Бидний тухай</Link>
+        <Link to="/track_your_order">Захиалга шалгах</Link>
         {userInfo && (
           <Link onClick={handleLogout} to="/">
             Гарах

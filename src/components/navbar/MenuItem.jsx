@@ -61,8 +61,11 @@ const MenuItem = () => {
             <Link to="" className="hover:border-b-[2px] border-b-mainColor">
               ШИНЭ
             </Link>
-            <Link to="/sellers" className="hover:border-b-[2px] border-b-mainColor">
-              ҮЙЛДВЭРЛЭ
+            <Link
+              to="/sellers"
+              className="hover:border-b-[2px] border-b-mainColor"
+            >
+              ҮЙЛДВЭРЛЭГЧИД
             </Link>
           </div>
         </div>

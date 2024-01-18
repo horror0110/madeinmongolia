@@ -16,6 +16,7 @@ import Info from "../components/homePage/Info";
 import ModalWindow from "../components/modal/ModalWindow";
 import { ProductService } from "../service/ProductService";
 import ShopCart from "../components/homePage/ShopCart";
+import NewProductsSkeleton from "../components/skeletons/homePage/NewProductsSkeleton";
 
 const Home = () => {
   const [newProducts, setNewProducts] = useState([]);
@@ -25,11 +26,20 @@ const Home = () => {
   const [emeelProducts, setEmeelProducts] = useState([]);
   const [cartProducts, setCartProducts] = useState([]);
   const [greenGroupProducts, setGreenGroupProducts] = useState([]);
-  const [shops , setShops] = useState([])
+  const [shops, setShops] = useState([]);
 
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   // fetch
   useEffect(() => {
     ProductService.getNew().then((products) => {
+      setTimeout(() => {
+        setLoading(false);
+      }, 2000);
+
       setNewProducts(products);
     });
   }, []);
@@ -80,11 +90,24 @@ const Home = () => {
       <Navbar />
       <Hero />
       <ModalWindow />
-      <NewProducts
-        newProducts={newProducts}
-        header="https://madeinmongolia.asia/uploads/image_names/web_images/new_products_title/VZAH90jhOEIBihmh8daBrA96HimH6tHQmMm9eB5Z.png"
-        nextButton={true}
-      />
+
+      <div>
+        <img
+          src="https://madeinmongolia.asia/uploads/image_names/web_images/new_products_title/VZAH90jhOEIBihmh8daBrA96HimH6tHQmMm9eB5Z.png"
+          alt=""
+          className="my-5"
+        />
+        {loading ? (
+          <NewProductsSkeleton />
+        ) : (
+          <NewProducts
+            newProducts={newProducts}
+            header="https://madeinmongolia.asia/uploads/image_names/web_images/new_products_title/VZAH90jhOEIBihmh8daBrA96HimH6tHQmMm9eB5Z.png"
+            nextButton={true}
+          />
+        )}
+      </div>
+
       <WeekBest
         data={weekProducts}
         header="https://madeinmongolia.asia/uploads/image_names/web_images/big_swiper/0TzSIXAxutDTbLqzoK3vfCkm2zTttRKdtGcvIKSx.png"
