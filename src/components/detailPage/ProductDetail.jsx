@@ -1,4 +1,4 @@
-import React, { useState, useContext, useRef, useEffect } from "react";
+import React, { useState, useContext, useRef, useLayoutEffect, useEffect } from "react";
 import YellowCard from "./YellowCard";
 import GrayCard from "./GrayCard";
 import StorePay from "./StorePay";
@@ -12,6 +12,11 @@ import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import { GlobalContext } from "../../context/GlobalContext";
 import thousandify from "thousandify";
 import "react-loading-skeleton/dist/skeleton.css";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+
+gsap.registerPlugin(ScrollTrigger);
 
 
 const ProductDetail = ({ product, loading }) => {
@@ -43,14 +48,48 @@ const ProductDetail = ({ product, loading }) => {
     return total;
   };
 
+  const boxRef = useRef();
+  const containerRef = useRef();
+
+  useLayoutEffect(() => {
+    let animation;
+    const handleResizeWindow = () => {
+      console.log("run");
+
+      animation?.kill();
+      // ScrollTrigger.saveStyles(boxRef.current);
+      ScrollTrigger.update();
+      const elHeight = boxRef.current.getBoundingClientRect().height;
+      const windowHeight = window.innerHeight;
+      const isShorterThanWindow = elHeight < windowHeight;
+      animation = ScrollTrigger.create({
+        trigger: boxRef.current,
+        start: () => (isShorterThanWindow ? "top top" : "bottom bottom"),
+        endTrigger: containerRef.current,
+        end: () =>
+          isShorterThanWindow ? `bottom top+=${elHeight}px` : "bottom bottom",
+        pin: true,
+        invalidateOnRefresh: true
+      });
+    };
+
+    handleResizeWindow();
+    window.addEventListener("resize", handleResizeWindow);
+
+    return () => {
+      animation?.kill();
+      window.removeEventListener("resize", handleResizeWindow);
+    };
+  }, []);
+
 
   return (
     products && (
-      <div className="flex justify-center gap-10 items-start mt-5">
+      <div ref={containerRef} className="flex justify-center gap-10 items-start mt-5">
         {/**** detail banner */}
 
-        <div className="w-[50%]">
-          <div className="">
+        <div  ref={boxRef}  className="w-[50%]">
+          <div  className="">
             {products && (
               <TransformWrapper>
                 <TransformComponent>
@@ -90,7 +129,7 @@ const ProductDetail = ({ product, loading }) => {
 
         {/*** detail description ***/}
 
-        <div className=" flex flex-col w-[50%] h-[1000px] ">
+        <div className=" flex flex-col w-[50%] ">
           {products && (
             <h1 className="font-semibold text-[22px] text-mainGray mb-10">
               {products.name}
