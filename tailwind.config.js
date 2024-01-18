@@ -43,30 +43,30 @@ module.exports = {
       },
     },
   },
-  // daisyui: {
-  //   themes: [
-  //     {
-  //       mytheme: {
-  //         primary: "#0039ff",
+  daisyui: {
+    themes: [
+      {
+        mytheme: {
+          primary: "#0039ff",
 
-  //         secondary: "#00d500",
+          secondary: "#00d500",
 
-  //         accent: "#007000",
+          accent: "#007000",
 
-  //         neutral: "#0b110f",
+          neutral: "#0b110f",
 
-  //         "base-100": "#fdf9ff",
+          "base-100": "#fdf9ff",
 
-  //         info: "#00bcff",
+          info: "#00bcff",
 
-  //         success: "#4e8200",
+          success: "#4e8200",
 
-  //         warning: "#ffd100",
+          warning: "#ffd100",
 
-  //         error: "#de0000",
-  //       },
-  //     },
-  //   ],
-  // },
+          error: "#de0000",
+        },
+      },
+    ],
+  },
   plugins: [require("daisyui")],
 };
