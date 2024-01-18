@@ -10,13 +10,16 @@ const DetailSkeleton = () => {
       </div>
 
       <div className="w-full">
-        <Skeleton height={150} />
+        <Skeleton height={110} />
         <div className="mt-5">
-          <Skeleton height={100} />
+          <Skeleton height={50} width={300} />
         </div>
 
         <div className="mt-5">
-          <Skeleton height={150} />
+          <Skeleton height={110} />
+        </div>
+        <div className="mt-5">
+          <Skeleton height={50} width={300} />
         </div>
         <div className="mt-5">
           <Skeleton height={80} />
@@ -25,7 +28,7 @@ const DetailSkeleton = () => {
           <Skeleton height={80} />
         </div>
         <div className="mt-5">
-          <Skeleton height={80} />
+          <Skeleton height={110} />
         </div>
       </div>
     </div>
