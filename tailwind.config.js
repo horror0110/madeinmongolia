@@ -43,7 +43,10 @@ module.exports = {
       },
     },
   },
-  daisyui: {
+
+
+daisyui: {
+
     themes: [
       {
         mytheme: {
