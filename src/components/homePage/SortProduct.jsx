@@ -15,7 +15,7 @@ const SortProduct = ({ data }) => {
           </button>
         </div>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3  xl:grid-cols-5 2xl:grid-cols-6  gap-16 mt-5">
+      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3  xl:grid-cols-5 2xl:grid-cols-5  gap-20  mt-5">
         {data.map((product, index) => (
           <div className="" key={product.id}>
             <SortProductTemp product={product} />

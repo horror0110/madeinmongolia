@@ -1,12 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
+import { GlobalContext } from "../../context/GlobalContext";
 
-const Shadow = ({ open }) => {
+const Shadow = ({ setOpen }) => {
   return (
-    open && (
-      <div className="fixed w-screen z-10 h-screen bg-black opacity-50 top-0 left-0">
-        Shadow
-      </div>
-    )
+    <div
+      onClick={() => setOpen(false)}
+      className={`fixed w-screen z-10 h-screen bg-black opacity-50 top-0 left-0 `}
+    ></div>
   );
 };
 

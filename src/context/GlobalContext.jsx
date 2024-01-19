@@ -1,4 +1,5 @@
 import { createContext, useState, useEffect } from "react";
+import { useCycle } from "framer-motion";
 
 export const GlobalContext = createContext();
 
@@ -15,12 +16,20 @@ export const GlobalProvider = ({ children }) => {
     JSON.parse(localStorage.getItem("cart")) || []
   );
 
-  const addCart = (product, value) => {
+  const [open, setOpen] = useState(false);
 
-    // dawhtsah baraag shalgah
-    const isProductInCart = basket.some((item) => item.id === product.id);
+  const [openCycle, cycleOpen] = useCycle(false, true);
+
+  const [openCycle2, cycleOpen2] = useCycle(false, true);
+
+  const addCart = (product, value) => {
+    // dawhtssan baraa bna uu shalgah true or false
+    const isProductInCart =
+      basket.length > 0 && basket.some((item) => item.id === product.id);
 
     let updatedCart;
+
+    // Dawhtswal quantityg nemeh
 
     if (isProductInCart) {
       updatedCart = basket.map((item) =>
@@ -51,7 +60,7 @@ export const GlobalProvider = ({ children }) => {
     setOpenModal(true);
   };
 
-
+  // logout
   const handleLogout = async (e) => {
     e.preventDefault();
 
@@ -91,7 +100,13 @@ export const GlobalProvider = ({ children }) => {
         setBasket,
         basket,
         addCart,
-        handleLogout
+        handleLogout,
+        open,
+        setOpen,
+        openCycle,
+        cycleOpen,
+        openCycle2,
+        cycleOpen2
       }}
     >
       <div>{children}</div>

@@ -9,7 +9,7 @@ const Sidebar = ({ open, setOpen }) => {
 
   const [activeLink, setActiveLink] = useState("");
 
-  const sidebarClasses = `h-screen bg-gray-300 w-[90%] fixed top-0 left-0 z-50 p-5 transform duration-500 transition-transform ${
+  const sidebarClasses = `h-screen bg-gray-300 w-[90%] fixed top-0 left-0 z-20 p-5 transform duration-500 transition-transform ${
     open ? "translate-x-0" : "-translate-x-full"
   }`;
 

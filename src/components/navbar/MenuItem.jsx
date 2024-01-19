@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 
-import Sidebar from "./Sidebar";
+import Sidebar from "../sidebars/Sidebar";
 import Shadow from "./Shadow";
+import { GlobalContext } from "../../context/GlobalContext";
 
 const MenuItem = () => {
-  const [open, setOpen] = useState(false);
+  const { open, setOpen } = useContext(GlobalContext);
+
   const links = [
     {
       id: 1,
@@ -71,7 +73,8 @@ const MenuItem = () => {
         </div>
 
         <Sidebar open={open} setOpen={setOpen} />
-        <Shadow open={open} />
+
+        {open && <Shadow setOpen={setOpen} />}
       </div>
     </div>
   );

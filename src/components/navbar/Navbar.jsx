@@ -16,7 +16,7 @@ const Navbar = () => {
     if (window.scrollY >= 140) {
       setVisible(true);
     } else {
-      setVisible(false);
+    setVisible(false);
     }
   };
 

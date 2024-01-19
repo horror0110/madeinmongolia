@@ -17,8 +17,6 @@ const WeekBest = ({ data, header }) => {
   };
   return (
     <>
-      <img src={header} alt="" className="" />
-
       <Swiper
         className=""
         spaceBetween={0}

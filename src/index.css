@@ -9,7 +9,7 @@ body,
   padding: 0;
   box-sizing: border-box;
   overflow-x: hidden;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
 .bottomAnimation {
@@ -37,11 +37,31 @@ body,
     transform: translateY(0rem);
   }
 }
-.shadow-bottom {
-  box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.75);
--webkit-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.75);
--moz-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.75);
+/* main {
+  position: fixed;
+  z-index: 50;
+
+} */
+
+aside {
+  z-index: 50;
+  position: fixed;
+  top: 0;
+  right: 0;
+  background-color: white;
+  height: 100vh;
+  width: 500px;
 }
 
+.cart {
+  background: linear-gradient(86deg, #2c6af2 5.54%, #263459 101.77%);
+
+}
+
+
+
+/* .btn-container {
+  position: fixed;
+} */
 
 

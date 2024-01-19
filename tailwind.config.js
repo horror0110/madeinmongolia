@@ -20,6 +20,7 @@ module.exports = {
         linkColor: "rgb(136, 136, 136)",
         greenColor: "rgb(40, 167, 69)",
         coralColor: "rgb(255, 116, 107)",
+        sideColor: "rgb(248, 249, 250)",
       },
       textColor: {
         mainColor: "#263459",
@@ -39,34 +40,34 @@ module.exports = {
         buttonDarkGray: "rgb(44, 44, 44)",
         shopColor: "rgb(95, 95, 95)",
         footerColor: "rgb(44, 62, 80)",
-        oceanBlue: "rgb(44, 106, 243)"
+        oceanBlue: "rgb(44, 106, 243)",
+        sideBlack: " rgb(33, 37, 41)",
+        sideBlack2: "rgb(52, 58, 64)",
       },
     },
   },
 
-
-daisyui: {
-
+  daisyui: {
     themes: [
       {
         mytheme: {
-          primary: "#0039ff",
+          primary: "#00b9e1",
 
-          secondary: "#00d500",
+          secondary: "#00dfff",
 
-          accent: "#007000",
+          accent: "#00cdf3",
 
-          neutral: "#0b110f",
+          neutral: "#16202d",
 
-          "base-100": "#fdf9ff",
+          "base-100": "#fffdff",
 
-          info: "#00bcff",
+          info: "#00bedb",
 
-          success: "#4e8200",
+          success: "#7af38a",
 
-          warning: "#ffd100",
+          warning: "#ffa500",
 
-          error: "#de0000",
+          error: "#ff8694",
         },
       },
     ],

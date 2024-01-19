@@ -39,7 +39,9 @@ const ProductDetailPage = () => {
 
   const [loading2, setLoading2] = useState(true);
 
-  //fetch
+  {
+    /** Detail product fetch */
+  }
 
   useEffect(() => {
     ProductService.getDetail(params.name).then((products) => {
@@ -52,6 +54,14 @@ const ProductDetailPage = () => {
       setRealData(products);
     });
   }, [params.name]);
+
+  {
+    /** Detail product fetch */
+  }
+
+  {
+    /** Танд санал болгох fetch  */
+  }
 
   useEffect(() => {
     if (getId !== null) {
@@ -66,6 +76,14 @@ const ProductDetailPage = () => {
     }
   }, [getId]);
 
+  {
+    /** Танд санал болгох fetch  */
+  }
+
+  {
+    /** Нийлүүлэгчийн эрэлттэй бараа fetch  */
+  }
+
   useEffect(() => {
     if (getId !== null) {
       ProductService.getTopSellers(getId).then((products) => {
@@ -74,9 +92,21 @@ const ProductDetailPage = () => {
     }
   }, [getId]);
 
+  {
+    /** Нийлүүлэгчийн эрэлттэй бараа fetch  */
+  }
+
+  {
+    /** render position 0,0  */
+  }
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [params.name, getId, relatedData]);
+
+  {
+    /** render position 0,0  */
+  }
 
   const breadcrumbList = [
     {

@@ -7,7 +7,7 @@ import { GlobalContext } from "../../context/GlobalContext";
 const SortProductTemp = ({ product }) => {
   const [hovered, setHovered] = useState(false);
 
-  const {getModal} = useContext(GlobalContext);
+  const { getModal } = useContext(GlobalContext);
 
   return (
     <div
@@ -15,14 +15,14 @@ const SortProductTemp = ({ product }) => {
       onMouseLeave={() => setHovered(false)}
       className={
         hovered
-          ? `border p-1 flex flex-col w-[220px] h-[300px]  shadow relative bottom-2 duration-300 transition-all transform`
-          : `border p-1 flex flex-col  w-[220px] h-[300px]  relative bottom-0 duration-300 transition-all transform`
+          ? `border p-1 flex flex-col w-[250px] h-[300px]  shadow relative bottom-2 duration-300 transition-all transform`
+          : `border p-1 flex flex-col  w-[250px] h-[300px]  relative bottom-0 duration-300 transition-all transform`
       }
     >
       <div className="relative">
         <img
           src={product.image[0]}
-          className="object-cover w-full h-full min-h-[210px]"
+          className="object-cover w-full h-full min-h-[230px]"
           alt={product.title}
         />
 
@@ -34,7 +34,7 @@ const SortProductTemp = ({ product }) => {
           }
         >
           <CiHeart />
-          <IoEyeSharp onClick={()=> getModal(product.id)} />
+          <IoEyeSharp onClick={() => getModal(product.id)} />
           <IoReload />
         </div>
       </div>
