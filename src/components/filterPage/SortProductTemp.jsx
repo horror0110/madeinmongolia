@@ -15,8 +15,8 @@ const SortProductTemp = ({ product }) => {
       onMouseLeave={() => setHovered(false)}
       className={
         hovered
-          ? `border p-1 flex flex-col w-[250px] h-[300px]  shadow relative bottom-2 duration-300 transition-all transform`
-          : `border p-1 flex flex-col  w-[250px] h-[300px]  relative bottom-0 duration-300 transition-all transform`
+          ? `border p-1 flex flex-col 2xl:w-[250px] 2xl:h-[300px] xl:w-[200px] xl:h-[240px]  shadow relative bottom-2 duration-300 transition-all transform`
+          : `border p-1 flex flex-col  w-[250px] h-[300px] xl:w-[200px] xl:h-[240px]  relative bottom-0 duration-300 transition-all transform`
       }
     >
       <div className="relative">

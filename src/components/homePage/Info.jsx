@@ -2,7 +2,7 @@ import React from "react";
 
 const Info = () => {
   return (
-    <div className="mx-10  lg:mx-20 xl:mx-20 2xl:mx-60 my-20">
+    <div className="mx-10 lg:mx-20 xl:mx-20 2xl:mx-60  xl:mt-36">
       <div className="flex justify-between border-b pb-3">
         <h1 className="font-bold text-[18px]">Мэдээ мэдээлэл</h1>
         <button className="bg-mainColor text-white text-[13px] font-medium rounded-full px-2 py-1">

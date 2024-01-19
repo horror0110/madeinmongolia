@@ -96,9 +96,8 @@ export default function BasketSidebar() {
     }, 0);
 
   return (
-    <main className="fixed z-50">
+    <main className="fixed z-50 ">
       <AnimatePresence>
-        -
         {openCycle && (
           <motion.aside
             initial={{ width: 0 }}
@@ -109,7 +108,7 @@ export default function BasketSidebar() {
               width: 0,
               transition: { delay: 0.4, duration: 0.3 },
             }}
-            className="p-5"
+            className="p-5 overflow-y-scroll max-h-screen"
           >
             <motion.div
               className=""
@@ -211,7 +210,7 @@ export default function BasketSidebar() {
                     <Link
                       to="/cart"
                       onClick={cycleOpen}
-                      className="bg-mainColor absolute bottom-2 right-0 w-[98%] text-white flex justify-between rounded-md p-3"
+                      className="bg-mainColor w-full text-white flex justify-between rounded-md p-3"
                     >
                       <span>Худалдан авах</span>
                       <div className="flex items-center gap-2">

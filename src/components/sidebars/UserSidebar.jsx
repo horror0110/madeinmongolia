@@ -104,7 +104,7 @@ export default function UserSidebar() {
                 width: 0,
                 transition: { delay: 0.4, duration: 0.3 },
               }}
-              className="px-7 pt-20 text-darkGray"
+              className="px-7 pt-20 text-darkGray overflow-y-scroll max-h-screen"
             >
               <motion.div
                 className=""
@@ -174,7 +174,7 @@ export default function UserSidebar() {
 
                   <button
                     onClick={handleLogout}
-                    className="btn bg-mainColor rounded-md  text-white w-full absolute bottom-2"
+                    className="btn bg-mainColor rounded-md  text-white w-full"
                   >
                     Системээс гарах
                   </button>
